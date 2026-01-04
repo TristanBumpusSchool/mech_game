@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3m38oqbwd316"]
+
+[ext_resource type="Script" uid="uid://bdnlpkk8e2k46" path="res://scripts/player.gd" id="1_symyc"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_sfv1e"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_symyc"]
+
+[node name="player" type="CharacterBody3D"]
+script = ExtResource("1_symyc")
+speed = null
+jump_time = null
+jump_speed = null
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_sfv1e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_symyc")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.84093505, 0.5411359, 0, -0.5411359, 0.84093505, 0, 0, 0)
+spring_length = 3.0
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.002573967, 2.9884596)

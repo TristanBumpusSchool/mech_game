@@ -1,0 +1,128 @@
+extends CharacterBody3D
+
+@export var speed = 0.0
+@export var max_speed = 10.0
+@export var accel = 1.0
+@export var jump_time = 1.0
+@export var jump_speed = 5.0
+@export var cam_sensativity = 30000
+@export var jumping = false
+
+
+
+func cam_rotation():
+	var temp = rotation.y
+	temp += -Input.get_last_mouse_screen_velocity().x / cam_sensativity
+	
+	var temp_2 = $SpringArm3D.rotation.x
+	temp_2 += -Input.get_last_mouse_screen_velocity().y / cam_sensativity
+	
+	rotation = Vector3(0,temp,0)
+	
+	$SpringArm3D.rotation = Vector3(temp_2,0,0)
+	
+	$SpringArm3D.rotation.x = clamp($SpringArm3D.rotation.x, -1, .72)
+	
+	#$SpringArm3D.rotate(Input.get_last_mouse_screen_velocity())
+
+func movement():
+	var direction =  Vector2.ZERO
+	if(Input.is_action_pressed("w")):
+		direction +=  Vector2($front.global_position.x, $front.global_position.z) - Vector2(global_position.x, global_position.z)
+	if(Input.is_action_pressed("s")):
+		direction +=  Vector2(global_position.x, global_position.z) - Vector2($front.global_position.x, $front.global_position.z)
+	
+	if(Input.is_action_pressed("a")):
+		direction += Vector2(global_position.x, global_position.z) - Vector2($left.global_position.x, $left.global_position.z) 
+	if(Input.is_action_pressed("d")):
+		direction += Vector2(global_position.x, global_position.z) - Vector2($right.global_position.x, $right.global_position.z) 
+	
+	direction = direction.normalized()
+	
+	var temp_speed = max_speed
+	
+	if Input.is_action_pressed("shift"):
+		temp_speed *= 2
+	
+	
+	if temp_speed > speed:
+		speed += accel
+	else:
+		speed = temp_speed
+	
+	if direction == Vector2.ZERO:
+		speed = 0
+	
+	velocity = Vector3(direction.x * speed, 0, direction.y * speed)
+	
+	if Input.is_action_just_pressed("space") and is_on_floor():
+		jumping = true
+		$timers/jump_timer.start(jump_time)
+	
+	if Input.is_action_just_released("space"):
+		jumping = false
+		$timers/jump_timer.stop()
+	
+	
+	if jumping:
+		velocity.y += jump_speed
+	
+	if !is_on_floor() and !jumping:
+		velocity.y += -10
+
+func animation():
+	#region Left arm range type
+	if $joint2/placement/arm.type == 1:
+		if Input.is_action_just_pressed("click"):
+			var left_arm = create_tween()
+			left_arm.tween_property($joint2,"rotation_degrees",Vector3(0,-90,0), .2)
+		if Input.is_action_just_released("click"):
+			var left_arm = create_tween()
+			left_arm.tween_property($joint2,"rotation_degrees",Vector3(0,-90,45), .2)
+		#endregion
+	#region Right arm range type
+	if $joint/placement/arm.type == 1:
+		if Input.is_action_just_pressed("r_click"):
+			var right_arm = create_tween()
+			right_arm.tween_property($joint,"rotation_degrees",Vector3(0,90,0), .2)
+		if Input.is_action_just_released("r_click"):
+			var right_arm = create_tween()
+			right_arm.tween_property($joint,"rotation_degrees",Vector3(0,0,0), .2)
+		#endregion
+	#region Left arm range type
+	if $joint2/placement/arm.type == 0:
+		if Input.is_action_just_pressed("click"):
+			var left_arm = create_tween()
+			left_arm.tween_property($joint2,"rotation_degrees",Vector3(0,-90,-90), .3)
+			left_arm.tween_property($joint2,"rotation_degrees",Vector3(0,-90,45), .1)
+			left_arm.tween_property($joint2,"rotation_degrees",Vector3(0,0,0), .2)
+		#endregion
+	#region Right arm range type
+	if $joint/placement/arm.type == 0:
+		if Input.is_action_just_pressed("r_click"):
+			var right_arm = create_tween()
+			right_arm.tween_property($joint,"rotation_degrees",Vector3(0,90,90), .3)
+			right_arm.tween_property($joint,"rotation_degrees",Vector3(0,90,-45), .1)
+			right_arm.tween_property($joint,"rotation_degrees",Vector3(0,0,0), .2)
+		#endregion
+
+
+
+func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+
+
+func _process(delta: float) -> void:
+	
+	#print(speed)
+	
+	cam_rotation()
+	movement()
+	animation()
+	
+	move_and_slide()
+
+
+func _on_jump_timer_timeout() -> void:
+	jumping = false

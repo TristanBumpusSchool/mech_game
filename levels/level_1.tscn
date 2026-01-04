@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=3 uid="uid://w0c6vdmscu6x"]
+
+[ext_resource type="PackedScene" uid="uid://d3m38oqbwd316" path="res://entities/player/player.tscn" id="1_vn7o3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_57e5w"]
+size = Vector3(1000, 1, 1000)
+
+[sub_resource type="Gradient" id="Gradient_vn7o3"]
+colors = PackedColorArray(1, 1, 1, 1, 0.3882353, 0.18431373, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vn7o3"]
+noise_type = 3
+seed = 3
+frequency = 0.8
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vn7o3"]
+width = 100
+height = 100
+noise = SubResource("FastNoiseLite_vn7o3")
+color_ramp = SubResource("Gradient_vn7o3")
+normalize = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vn7o3"]
+albedo_color = Color(0.3882353, 0.18431373, 0, 1)
+albedo_texture = SubResource("NoiseTexture2D_vn7o3")
+
+[sub_resource type="BoxMesh" id="BoxMesh_vn7o3"]
+material = SubResource("StandardMaterial3D_vn7o3")
+size = Vector3(100, 1, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vn7o3"]
+size = Vector3(1, 10, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jirdo"]
+size = Vector3(1, 10, 10)
+
+[node name="level_1" type="Node3D"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.442469, 0)
+omni_range = 66.261
+omni_attenuation = 0.0
+
+[node name="envirenment" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="envirenment"]
+shape = SubResource("BoxShape3D_57e5w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="envirenment/CollisionShape3D"]
+mesh = SubResource("BoxMesh_vn7o3")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="envirenment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.787011)
+shape = SubResource("BoxShape3D_vn7o3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="envirenment/CollisionShape3D2"]
+mesh = SubResource("BoxMesh_jirdo")
+skeleton = NodePath("../..")
+
+[node name="player" parent="." instance=ExtResource("1_vn7o3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.8049538, 0)
