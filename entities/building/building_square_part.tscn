@@ -1,0 +1,489 @@
+[gd_scene load_steps=14 format=3 uid="uid://s4ue6ksnb00f"]
+
+[ext_resource type="Script" uid="uid://cgcvky8oqspc0" path="res://entities/building/building_square_part.gd" id="1_31wqf"]
+[ext_resource type="Texture2D" uid="uid://7q406ch3nm3t" path="res://assets/building/grayskyscraper.png" id="1_uswdx"]
+[ext_resource type="Texture2D" uid="uid://ccdfmyf5y057k" path="res://assets/building/grayskyscrapertopbottom (1).png" id="3_43vaf"]
+[ext_resource type="Texture2D" uid="uid://d2jw00mvywgdg" path="res://assets/building/explosion.png" id="3_ihkdd"]
+[ext_resource type="Texture2D" uid="uid://c2strfff8jcni" path="res://assets/building/rubble.png" id="4_43vaf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n33d6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ty4bj"]
+albedo_texture = ExtResource("3_43vaf")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_msj4i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fxqwy"]
+albedo_texture = ExtResource("1_uswdx")
+texture_filter = 0
+
+[sub_resource type="Animation" id="Animation_ihkdd"]
+resource_name = "explosion"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("meshes:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("meshes/MeshInstance3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.07464116, 0.21459334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.49831522, 0), Vector3(0, 1.0417563, 0), Vector3(0, 2.0386596, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("meshes/MeshInstance3D3:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.19593306),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.5707964, 0, 0), Vector3(1.9742641, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("meshes/MeshInstance3D4:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.19126798),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.5707964, 3.1415925, 0), Vector3(0.9050055, -7.422792e-15, -3.1415925)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("meshes/MeshInstance3D5:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.18193783),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.5707964, 1.5707964, 0), Vector3(0.87645197, -1.5707964, 3.1415925)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("meshes/MeshInstance3D6:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.18193783),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.5295532, 1.5707972, -3.1415918), Vector3(0.6313554, 1.5707964, -3.1415925)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("explosion/Sprite3D:scale")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.17260769, 0.6157896, 1.0333333, 1.2666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.8, 0.8, 0.8), Vector3(0.8, 0.8, 0.8), Vector3(0.8, 0.8, 0.8), Vector3(2, 2, 2), Vector3(0.8, 0.8, 0.8), Vector3(0, 0, 0)]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1.9666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("explosion/Sprite3D2:position")
+tracks/8/interp = 2
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.28456944, 0.53333336, 0.93333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.45893312, 0.80395234, -1.0397687), Vector3(-0.549387, -0.46013427, -1.3086286)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("explosion/Sprite3D3:position")
+tracks/9/interp = 2
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.39186612, 0.62045467, 1.0962921),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.7529739, 1.440126, 0.48311806), Vector3(1.8307323, -0.40124422, 1.0131586)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("explosion/Sprite3D4:position")
+tracks/10/interp = 2
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.29389957, 0.49449772, 0.7977274),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-2.0832417, 1.4111924, 0.81186104), Vector3(-2.5133698, -0.43739855, 1.2434092)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("explosion/Sprite3D5:position")
+tracks/11/interp = 2
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0.4618422, 0.57380396, 0.8210528),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1.2463043, 1.1412904, -1.3858595), Vector3(1.2463043, -0.5843365, -1.3858595)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("explosion/Sprite3D2:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0.07930624, 0.9563399),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("explosion/Sprite3D3:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0.07930624, 1.1666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("explosion/Sprite3D4:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0.07930624, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("explosion/Sprite3D5:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0.07930624, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_43vaf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("meshes:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("meshes/MeshInstance3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.49831522, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("meshes/MeshInstance3D3:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5707964, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("meshes/MeshInstance3D4:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5707964, 3.1415925, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("meshes/MeshInstance3D5:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5707964, 1.5707964, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("meshes/MeshInstance3D6:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5707964, -1.5707964, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("explosion/Sprite3D:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.8, 0.8, 0.8)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("explosion/Sprite3D2:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("explosion/Sprite3D3:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("explosion/Sprite3D4:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("explosion/Sprite3D5:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("explosion/Sprite3D2:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("explosion/Sprite3D3:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("explosion/Sprite3D4:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("explosion/Sprite3D5:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_43vaf"]
+_data = {
+&"RESET": SubResource("Animation_43vaf"),
+&"explosion": SubResource("Animation_ihkdd")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_43vaf"]
+
+[node name="building_square_part" type="Node3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_31wqf")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_n33d6")
+
+[node name="meshes" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="meshes"]
+transform = Transform3D(0.51418537, 0, 0, 0, 1, 0, 0, 0, 0.51418537, 0, 0.49831522, 0)
+material_override = SubResource("StandardMaterial3D_ty4bj")
+mesh = SubResource("PlaneMesh_msj4i")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="meshes"]
+transform = Transform3D(-0.51418537, 8.742278e-08, 0, -4.4951513e-08, -1, 0, 0, 0, 0.51418537, 0, -0.48317647, 0)
+material_override = SubResource("StandardMaterial3D_ty4bj")
+mesh = SubResource("PlaneMesh_msj4i")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="meshes"]
+transform = Transform3D(0.51418537, 0, 0, 0, -4.371139e-08, -0.51418537, 0, 1, -2.2475756e-08, 0, 0.013330794, 0.51024175)
+material_override = SubResource("StandardMaterial3D_fxqwy")
+mesh = SubResource("PlaneMesh_msj4i")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="meshes"]
+transform = Transform3D(-0.51418537, 1.509958e-07, -3.3937449e-15, 0, -4.371139e-08, -0.51418537, -7.763983e-08, -1, 2.2475756e-08, 0, 0.0133308405, -0.49989808)
+material_override = SubResource("StandardMaterial3D_fxqwy")
+mesh = SubResource("PlaneMesh_msj4i")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="meshes"]
+transform = Transform3D(-2.2475756e-08, 1, -2.2475756e-08, 0, -4.371139e-08, -0.51418537, -0.51418537, -4.371139e-08, 9.824465e-16, 0.5053054, 0.013330794, -2.2841766e-08)
+material_override = SubResource("StandardMaterial3D_fxqwy")
+mesh = SubResource("PlaneMesh_msj4i")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="meshes"]
+transform = Transform3D(-2.2475755e-08, -0.9999999, 2.2475755e-08, 0, -4.3711385e-08, -0.5141853, 0.5141853, -4.3711385e-08, 9.824464e-16, -0.4879719, 0.0133308405, 2.2841766e-08)
+material_override = SubResource("StandardMaterial3D_fxqwy")
+mesh = SubResource("PlaneMesh_msj4i")
+
+[node name="explosion" type="Node3D" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="explosion"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("3_ihkdd")
+
+[node name="Sprite3D2" type="Sprite3D" parent="explosion"]
+billboard = 1
+texture_filter = 0
+texture = ExtResource("4_43vaf")
+
+[node name="Sprite3D3" type="Sprite3D" parent="explosion"]
+billboard = 1
+texture_filter = 0
+texture = ExtResource("4_43vaf")
+
+[node name="Sprite3D4" type="Sprite3D" parent="explosion"]
+billboard = 1
+texture_filter = 0
+texture = ExtResource("4_43vaf")
+
+[node name="Sprite3D5" type="Sprite3D" parent="explosion"]
+billboard = 1
+texture_filter = 0
+texture = ExtResource("4_43vaf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_43vaf")
+}
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_43vaf")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

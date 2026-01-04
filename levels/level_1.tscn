@@ -1,7 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://w0c6vdmscu6x"]
+[gd_scene load_steps=14 format=3 uid="uid://w0c6vdmscu6x"]
 
+[ext_resource type="PackedScene" uid="uid://s4ue6ksnb00f" path="res://entities/building/building_square_part.tscn" id="1_bt44k"]
 [ext_resource type="PackedScene" uid="uid://d3m38oqbwd316" path="res://entities/player/player.tscn" id="1_vn7o3"]
 [ext_resource type="PackedScene" uid="uid://ct5jms772pair" path="res://entities/enemies/enemy_1.tscn" id="2_jirdo"]
+[ext_resource type="PackedScene" uid="uid://ctustbevhsoj7" path="res://entities/building/building.tscn" id="4_kx6l7"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jirdo"]
 vertices = PackedVector3Array(-4.5, 2.5, -27, -2.5, 2.5, -27, -2.5, 2.5, -499.5, -4.75, 2.5, -26, -499.5, 2.5, -499.5, -499.5, 2.5, -26, 5, 2.5, -27, 5, 2.5, -499.5, 6.25, 2.5, -27.25, 6.5, 2.5, -26, 499.5, 2.5, -26, 499.5, 2.5, -499.5, -10.5, 2.5, -6.25, -4.75, 2.5, -25.25, -499.5, 2.5, -4.75, -12.25, 2.5, -6, -12.25, 2.5, -4.5, -10.25, 2.5, 5, -1, 2.5, 5.75, -0.75, 2.5, 5.25, 1, 2.5, 5.25, 6.25, 2.5, -24.75, -4.25, 2.5, -24.75, -10, 2.5, -5.75, 1.25, 2.5, 7, 499.5, 2.5, 6.75, -499.5, 2.5, 3.5, -12.25, 2.5, 3.25, -12, 2.5, 5, -1, 2.5, 16.25, 0.25, 2.5, 499.5, -499.5, 2.5, 499.5, 0.25, 2.5, 16.5, 1.25, 2.5, 14.75, 499.5, 2.5, 15, 1.25, 2.5, 16.25, 499.5, 2.5, 499.5)
@@ -47,6 +49,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.442469, 0)
 omni_range = 66.261
 omni_attenuation = 0.0
 
+[node name="building_square_part" parent="." instance=ExtResource("1_bt44k")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 8.829119, 2.0236273, -8.308544)
+
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_jirdo")
 
@@ -90,3 +95,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 
 [node name="enemy_1" parent="." instance=ExtResource("2_jirdo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.586721, 2.5, 0)
+
+[node name="building2" parent="." instance=ExtResource("4_kx6l7")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 12.512879, 1.524, -16.943584)

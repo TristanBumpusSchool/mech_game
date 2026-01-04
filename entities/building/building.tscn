@@ -1,0 +1,118 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctustbevhsoj7"]
+
+[ext_resource type="PackedScene" uid="uid://s4ue6ksnb00f" path="res://entities/building/building_square_part.tscn" id="1_1uuib"]
+[ext_resource type="PackedScene" uid="uid://cpgpojibkngoh" path="res://entities/building/building_spike_part.tscn" id="2_2a5kx"]
+
+[node name="building" type="Node3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="building_square_part" parent="." instance=ExtResource("1_1uuib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0066235736, -7.450581e-09, 1.0010885)
+
+[node name="building_square_part2" parent="." instance=ExtResource("1_1uuib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0066235736, -7.450581e-09, 0.0010885)
+
+[node name="building_square_part3" parent="." instance=ExtResource("1_1uuib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0066235736, -7.450581e-09, -0.9989115)
+
+[node name="building_square_part4" parent="." instance=ExtResource("1_1uuib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0066236, -7.450581e-09, 1.0010885)
+
+[node name="building_square_part5" parent="." instance=ExtResource("1_1uuib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0066236, -7.450581e-09, 0.0010885)
+
+[node name="building_square_part6" parent="." instance=ExtResource("1_1uuib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0066236, -7.450581e-09, -0.9989115)
+
+[node name="building_square_part7" parent="." instance=ExtResource("1_1uuib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9933764, -7.450581e-09, 1.0010885)
+
+[node name="building_square_part8" parent="." instance=ExtResource("1_1uuib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9933764, -7.450581e-09, 0.0010885)
+
+[node name="building_square_part9" parent="." instance=ExtResource("1_1uuib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9933764, -7.450581e-09, -0.9989115)
+
+[node name="building_square_part10" parent="." instance=ExtResource("1_1uuib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9933764, 1, 1.0010885)
+
+[node name="building_square_part11" parent="." instance=ExtResource("1_1uuib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9933764, 1, 0.0010885)
+
+[node name="building_square_part12" parent="." instance=ExtResource("1_1uuib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9933764, 1, -0.9989115)
+
+[node name="building_square_part13" parent="." instance=ExtResource("1_1uuib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0066236258, 1, 1.0010885)
+
+[node name="building_square_part14" parent="." instance=ExtResource("1_1uuib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0066236258, 1, 0.0010885)
+
+[node name="building_square_part15" parent="." instance=ExtResource("1_1uuib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0066236258, 1, -0.9989115)
+
+[node name="building_square_part16" parent="." instance=ExtResource("1_1uuib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0066236, 1, 1.0010885)
+
+[node name="building_square_part17" parent="." instance=ExtResource("1_1uuib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0066236, 1, 0.0010885)
+
+[node name="building_square_part18" parent="." instance=ExtResource("1_1uuib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0066236, 1, -0.9989115)
+
+[node name="building_square_part19" parent="." instance=ExtResource("1_1uuib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0066235736, 2, 1.0010885)
+
+[node name="building_square_part20" parent="." instance=ExtResource("1_1uuib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0066235736, 2, 0.0010885)
+
+[node name="building_square_part21" parent="." instance=ExtResource("1_1uuib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0066235736, 2, -0.9989115)
+
+[node name="building_square_part22" parent="." instance=ExtResource("1_1uuib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0066236, 2, 1.0010885)
+
+[node name="building_square_part23" parent="." instance=ExtResource("1_1uuib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0066236, 2, 0.0010885)
+
+[node name="building_square_part24" parent="." instance=ExtResource("1_1uuib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0066236, 2, -0.9989115)
+
+[node name="building_square_part25" parent="." instance=ExtResource("1_1uuib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9933764, 2, 1.0010885)
+
+[node name="building_square_part26" parent="." instance=ExtResource("1_1uuib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9933764, 2, 0.0010885)
+
+[node name="building_square_part27" parent="." instance=ExtResource("1_1uuib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9933764, 2, -0.9989115)
+
+[node name="building_square_part28" parent="." instance=ExtResource("1_1uuib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9933764, 3, 1.0010885)
+
+[node name="building_square_part29" parent="." instance=ExtResource("1_1uuib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9933764, 3, 0.0010885)
+
+[node name="building_square_part30" parent="." instance=ExtResource("1_1uuib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9933764, 3, -0.9989115)
+
+[node name="building_square_part31" parent="." instance=ExtResource("1_1uuib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0066236258, 3, 1.0010885)
+
+[node name="building_square_part32" parent="." instance=ExtResource("1_1uuib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0066236258, 3, 0.0010885)
+
+[node name="building_square_part33" parent="." instance=ExtResource("1_1uuib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0066236258, 3, -0.9989115)
+
+[node name="building_square_part34" parent="." instance=ExtResource("1_1uuib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0066236, 3, 1.0010885)
+
+[node name="building_square_part35" parent="." instance=ExtResource("1_1uuib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0066236, 3, 0.0010885)
+
+[node name="building_square_part36" parent="." instance=ExtResource("1_1uuib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0066236, 3, -0.9989115)
+
+[node name="building_spike_part" parent="." instance=ExtResource("2_2a5kx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.048564672, 3.7106833, -0.037364125)

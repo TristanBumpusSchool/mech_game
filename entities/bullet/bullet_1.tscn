@@ -13,11 +13,11 @@ damage = 30
 [node name="AAbolt" parent="." instance=ExtResource("2_2c3f1")]
 transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 0.8961719, -1.4412477, -0.55430496)
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." groups=["player_bullet"]]
 collision_layer = 4
 collision_mask = 4
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" groups=["player_bullet"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.007171631, -0.008636475, -0.13244629)
 shape = SubResource("BoxShape3D_fgjqa")
 

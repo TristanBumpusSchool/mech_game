@@ -26,6 +26,7 @@ p=""
 arm=""
 ranged=""
 melee=""
+player_bullet=""
 
 [input]
 
