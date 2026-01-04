@@ -1,11 +1,66 @@
-[gd_scene load_steps=8 format=3 uid="uid://brpbx3w0fsowt"]
+[gd_scene load_steps=13 format=3 uid="uid://brpbx3w0fsowt"]
 
 [ext_resource type="Script" uid="uid://bq5iay0ilgha2" path="res://scripts/weapons.gd" id="1_fx4ld"]
 [ext_resource type="PackedScene" uid="uid://de65yqf2r8tqd" path="res://assets/arms/AAframe.fbx" id="2_bkq4o"]
+[ext_resource type="PackedScene" uid="uid://dvmx33o7cstu0" path="res://assets/arms/AAbolt.fbx" id="2_xn76u"]
+[ext_resource type="PackedScene" uid="uid://yo7arhytthvn" path="res://assets/arms/a_aframe.tscn" id="3_0ydaa"]
 [ext_resource type="PackedScene" uid="uid://cmocd21doevjn" path="res://assets/arms/AAcanon.fbx" id="3_o8oqt"]
+[ext_resource type="PackedScene" uid="uid://cv5c8o16p5aqp" path="res://assets/arms/a_acanon.tscn" id="5_xn76u"]
+[ext_resource type="PackedScene" uid="uid://byew71hn3g7f6" path="res://assets/arms/a_abolt.tscn" id="7_bpuo5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fx4ld"]
 size = Vector3(2, 1, 1)
+
+[sub_resource type="Animation" id="Animation_bkq4o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AAcanon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.7023475, -1.2997975, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:fire")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AAcanon2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.7, -1.3, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AAbolt2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.3379395, -1.2708352, 0.002523899)]
+}
 
 [sub_resource type="Animation" id="Animation_fx4ld"]
 resource_name = "fire"
@@ -37,37 +92,40 @@ tracks/1/keys = {
 "values": [0, 1]
 }
 
-[sub_resource type="Animation" id="Animation_bkq4o"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_bpuo5"]
+resource_name = "fire1"
+loop_mode = 1
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AAcanon:position")
+tracks/0/path = NodePath("AAcanon2:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.14059912, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(1.7023475, -1.2997975, 0)]
+"values": [Vector3(1.7, -1.3, 0), Vector3(0.7987778, -1.3, 0), Vector3(0.98307925, -1.3, 0), Vector3(1.7, -1.3, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:fire")
+tracks/1/path = NodePath("AAbolt2:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"times": PackedFloat32Array(0, 0.18, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.3379395, -1.2708352, 0.002523899), Vector3(0.44114852, -1.2708352, 0.002523899), Vector3(1.3379395, -1.2708352, 0.002523899), Vector3(1.3379395, -1.2708352, 0.002523899)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bkq4o"]
 _data = {
 &"RESET": SubResource("Animation_bkq4o"),
-&"fire": SubResource("Animation_fx4ld")
+&"fire": SubResource("Animation_fx4ld"),
+&"fire1": SubResource("Animation_bpuo5")
 }
 
 [node name="arm" type="CharacterBody3D"]
@@ -85,11 +143,24 @@ libraries = {
 &"": SubResource("AnimationLibrary_bkq4o")
 }
 
+[node name="AAbolt" parent="." instance=ExtResource("2_xn76u")]
+
 [node name="AAframe" parent="." instance=ExtResource("2_bkq4o")]
 transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 1.3607843, -1.3147967, 0)
+visible = false
+
+[node name="AAframe2" parent="." instance=ExtResource("3_0ydaa")]
+transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 1.361, -1.315, 0)
 
 [node name="AAcanon" parent="." instance=ExtResource("3_o8oqt")]
 transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 1.7023475, -1.2997975, 0)
+visible = false
+
+[node name="AAcanon2" parent="." instance=ExtResource("5_xn76u")]
+transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 1.7, -1.3, 0)
 
 [node name="bullet_source" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7506337, -0.04624474, 0)
+
+[node name="AAbolt2" parent="." instance=ExtResource("7_bpuo5")]
+transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 1.3379395, -1.2708352, 0.002523899)

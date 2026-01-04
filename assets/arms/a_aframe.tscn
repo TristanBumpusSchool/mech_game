@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://yo7arhytthvn"]
+
+[ext_resource type="PackedScene" uid="uid://de65yqf2r8tqd" path="res://assets/arms/AAframe.fbx" id="1_d7lbc"]
+[ext_resource type="Material" uid="uid://0cjqky1h1biu" path="res://assets/mats/mat_metal_dark.tres" id="2_ngp6h"]
+
+[node name="AAframe" instance=ExtResource("1_d7lbc")]
+
+[node name="pCube5" parent="group1" index="0"]
+surface_material_override/0 = ExtResource("2_ngp6h")
+
+[node name="pCube4" parent="group1" index="1"]
+surface_material_override/0 = ExtResource("2_ngp6h")

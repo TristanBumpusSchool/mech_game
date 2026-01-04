@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv5c8o16p5aqp"]
+
+[ext_resource type="PackedScene" uid="uid://cmocd21doevjn" path="res://assets/arms/AAcanon.fbx" id="1_efx53"]
+[ext_resource type="Material" uid="uid://0cjqky1h1biu" path="res://assets/mats/mat_metal_dark.tres" id="2_usy8m"]
+
+[node name="AAcanon" instance=ExtResource("1_efx53")]
+
+[node name="pCylinder4" parent="group1" index="0"]
+surface_material_override/0 = ExtResource("2_usy8m")
+
+[node name="pCylinder5" parent="group1" index="1"]
+surface_material_override/0 = ExtResource("2_usy8m")
