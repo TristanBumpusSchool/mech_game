@@ -42,6 +42,8 @@ omni_range = 66.261
 omni_attenuation = 0.0
 
 [node name="envirenment" type="StaticBody3D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="envirenment"]
 shape = SubResource("BoxShape3D_57e5w")

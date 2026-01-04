@@ -74,18 +74,22 @@ func animation():
 	#region Left arm range type
 	if $joint2/placement/arm.type == 1:
 		if Input.is_action_just_pressed("click"):
+			$joint2/placement/arm.firering = true
 			var left_arm = create_tween()
 			left_arm.tween_property($joint2,"rotation_degrees",Vector3(0,-90,0), .2)
 		if Input.is_action_just_released("click"):
+			$joint2/placement/arm.firering = false
 			var left_arm = create_tween()
 			left_arm.tween_property($joint2,"rotation_degrees",Vector3(0,-90,45), .2)
 		#endregion
 	#region Right arm range type
 	if $joint/placement/arm.type == 1:
 		if Input.is_action_just_pressed("r_click"):
+			$joint/placement/arm.firering = true
 			var right_arm = create_tween()
 			right_arm.tween_property($joint,"rotation_degrees",Vector3(0,90,0), .2)
 		if Input.is_action_just_released("r_click"):
+			$joint/placement/arm.firering = false
 			var right_arm = create_tween()
 			right_arm.tween_property($joint,"rotation_degrees",Vector3(0,0,0), .2)
 		#endregion

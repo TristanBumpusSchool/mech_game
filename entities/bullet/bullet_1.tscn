@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2am4bisfeaxd"]
+
+[ext_resource type="Script" uid="uid://c2s3dlmqnaps" path="res://scripts/bullet.gd" id="1_fgjqa"]
+[ext_resource type="PackedScene" uid="uid://dvmx33o7cstu0" path="res://assets/arms/AAbolt.fbx" id="2_2c3f1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fgjqa"]
+size = Vector3(0.347229, 0.30267334, 0.44555664)
+
+[node name="bullet" type="CharacterBody3D"]
+script = ExtResource("1_fgjqa")
+
+[node name="AAbolt" parent="." instance=ExtResource("2_2c3f1")]
+transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 0.8961719, -1.4412477, -0.55430496)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.007171631, -0.008636475, -0.13244629)
+shape = SubResource("BoxShape3D_fgjqa")
+
+[node name="death_time" type="Timer" parent="."]
+wait_time = 20.0
+autostart = true
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="death_time" to="." method="_on_death_time_timeout"]
