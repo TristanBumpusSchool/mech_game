@@ -95,11 +95,10 @@ _data = {
 }
 
 [node name="arm" type="CharacterBody3D"]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 6
+collision_mask = 6
 script = ExtResource("1_fx4ld")
 type = 1
-fire = false
 bullet = "res://entities/bullet/bullet_1.tscn"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -120,6 +119,9 @@ transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 1.7, -1.3, 0)
 
 [node name="bullet_source" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8740034, -0.04624474, 0)
+
+[node name="bullet_target" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.284185, -0.04624474, 0)
 
 [node name="AAbolt2" parent="." instance=ExtResource("7_bpuo5")]
 transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 1.3379395, -1.2708352, 0.002523899)

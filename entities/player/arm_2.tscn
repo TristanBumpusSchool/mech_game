@@ -15,8 +15,8 @@ size = Vector3(0.1, 4, 0.1)
 size = Vector3(0.1, 4, 0.1)
 
 [node name="arm" type="CharacterBody3D"]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 6
+collision_mask = 6
 script = ExtResource("1_b21oe")
 type = 0
 
@@ -31,7 +31,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.44, 0)
 mesh = SubResource("BoxMesh_2ejlw")
 
 [node name="Area3D" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.44, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.222027, 1.44, 0)
 shape = SubResource("BoxShape3D_b21oe")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

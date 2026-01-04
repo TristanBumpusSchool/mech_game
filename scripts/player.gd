@@ -7,7 +7,7 @@ extends CharacterBody3D
 @export var jump_speed = 5.0
 @export var cam_sensativity = 30000
 @export var jumping = false
-
+@export var target = Vector3.ZERO
 
 
 func cam_rotation():
@@ -104,13 +104,13 @@ func animation():
 				right_arm.tween_property($joint,"rotation_degrees",Vector3(0,0,0), .2)
 			#endregion
 		#region Right arm range type
-	if $joint/placement/arm.type == 0:
-		if Input.is_action_just_pressed("r_click"):
-			var right_arm = create_tween()
-			right_arm.tween_property($joint,"rotation_degrees",Vector3(0,90,90), .3)
-			right_arm.tween_property($joint,"rotation_degrees",Vector3(0,90,-45), .1)
-			right_arm.tween_property($joint,"rotation_degrees",Vector3(0,0,0), .2)
-		#endregion
+		if $joint/placement/arm.type == 0:
+			if Input.is_action_just_pressed("r_click"):
+				var right_arm = create_tween()
+				right_arm.tween_property($joint,"rotation_degrees",Vector3(0,90,90), .3)
+				right_arm.tween_property($joint,"rotation_degrees",Vector3(0,90,-45), .1)
+				right_arm.tween_property($joint,"rotation_degrees",Vector3(0,0,0), .2)
+			#endregion
 
 
 
@@ -122,6 +122,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	
 	#print(speed)
+	
+	if $SpringArm3D/Camera3D/RayCast3D.is_colliding():
+		target = $SpringArm3D/Camera3D/RayCast3D.get_collision_point()
+	else:
+		target = Vector3.ZERO
 	
 	cam_rotation()
 	movement()

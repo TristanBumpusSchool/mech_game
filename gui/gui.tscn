@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Crosshair128x128" type="Sprite2D" parent="."]
-position = Vector2(526, 324)
+position = Vector2(576, 324)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_yw5qc")
 

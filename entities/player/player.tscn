@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d3m38oqbwd316"]
+[gd_scene load_steps=8 format=3 uid="uid://d3m38oqbwd316"]
 
 [ext_resource type="Script" uid="uid://bdnlpkk8e2k46" path="res://scripts/player.gd" id="1_symyc"]
 [ext_resource type="PackedScene" uid="uid://brpbx3w0fsowt" path="res://entities/player/arm_1.tscn" id="2_abrql"]
@@ -14,11 +14,7 @@ height = 4.0
 radius = 1.0
 height = 4.0
 
-[sub_resource type="SphereMesh" id="SphereMesh_fkugw"]
-radius = 2.0
-height = 4.0
-
-[node name="player" type="CharacterBody3D"]
+[node name="player" type="CharacterBody3D" groups=["p"]]
 script = ExtResource("1_symyc")
 accel = 0.5
 jump_time = 0.3
@@ -40,14 +36,9 @@ spring_length = 5.0
 transform = Transform3D(1, 0, 0, 0, 0.8528407, -0.5221712, 0, 0.5221712, 0.8528407, 0, 0.103999615, 4.731001)
 current = true
 
-[node name="SpringArm3D" type="SpringArm3D" parent="SpringArm3D/Camera3D"]
-spring_length = -100.0
-
-[node name="target" type="Node3D" parent="SpringArm3D/Camera3D/SpringArm3D" groups=["target"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -100)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SpringArm3D/Camera3D/SpringArm3D/target"]
-mesh = SubResource("SphereMesh_fkugw")
+[node name="RayCast3D" type="RayCast3D" parent="SpringArm3D/Camera3D"]
+target_position = Vector3(0, 0, -100)
+collision_mask = 7
 
 [node name="joint" parent="." instance=ExtResource("2_sglur")]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 1.07, 1.15, 0)
@@ -64,7 +55,6 @@ transform = Transform3D(-3.090862e-08, 3.090862e-08, -1, 0.70710677, 0.70710677,
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.25, 0, -0.019)
 
 [node name="arm" parent="joint2/placement" instance=ExtResource("2_abrql")]
-fire = 0
 
 [node name="front" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)

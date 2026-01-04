@@ -5,10 +5,11 @@ extends CharacterBody3D
 @export var fire = 0
 @export var bullet = ""
 @export var hp = 100
+@export var damage = 100
+@onready var player = get_tree().get_first_node_in_group("p")
 
 
-
-func damage(d):
+func damaged(d):
 	hp -= d
 	if hp <= 0:
 		queue_free()
@@ -23,6 +24,16 @@ func _process(delta: float) -> void:
 			var b = load(bullet)
 			var bul = b.instantiate()
 			bul.global_position = $bullet_source.global_position
-			bul.target = ($bullet_source.global_position - global_position).normalized()
+			if player.target == Vector3.ZERO:
+				bul.target = ($bullet_target.global_position - $bullet_source.global_position).normalized()
+			else:
+				bul.target = (player.target - $bullet_source.global_position).normalized()
+			
 			get_tree().current_scene.add_child(bul)
 			fire -= 1
+
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body.has_method("damaged"):
+		body.damaged(damage)
