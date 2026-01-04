@@ -4,6 +4,15 @@ extends CharacterBody3D
 @export var firering = false
 @export var fire = 0
 @export var bullet = ""
+@export var hp = 100
+
+
+
+func damage(d):
+	hp -= d
+	if hp <= 0:
+		queue_free()
+
 
 
 func _process(delta: float) -> void:
@@ -14,7 +23,6 @@ func _process(delta: float) -> void:
 			var b = load(bullet)
 			var bul = b.instantiate()
 			bul.global_position = $bullet_source.global_position
-			bul.rotation = rotation_degrees
 			bul.target = ($bullet_source.global_position - global_position).normalized()
 			get_tree().current_scene.add_child(bul)
 			fire -= 1

@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://78se45loude4"]
+
+[ext_resource type="Texture2D" uid="uid://c8mfrw8eshfk7" path="res://assets/gui/crosshair_128x128.png" id="1_yw5qc"]
+
+[node name="gui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Crosshair128x128" type="Sprite2D" parent="."]
+position = Vector2(526, 324)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_yw5qc")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]

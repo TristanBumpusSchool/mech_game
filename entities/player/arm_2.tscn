@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://j67o6socn4pl"]
+[gd_scene load_steps=6 format=3 uid="uid://j67o6socn4pl"]
 
 [ext_resource type="Script" uid="uid://bq5iay0ilgha2" path="res://scripts/weapons.gd" id="1_b21oe"]
 
@@ -9,6 +9,9 @@ size = Vector3(2, 1, 1)
 size = Vector3(2, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_2ejlw"]
+size = Vector3(0.1, 4, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b21oe"]
 size = Vector3(0.1, 4, 0.1)
 
 [node name="arm" type="CharacterBody3D"]
@@ -24,5 +27,11 @@ mesh = SubResource("BoxMesh_b21oe")
 shape = SubResource("BoxShape3D_2ejlw")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9962791, 1.4397336, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.44, 0)
 mesh = SubResource("BoxMesh_2ejlw")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.44, 0)
+shape = SubResource("BoxShape3D_b21oe")

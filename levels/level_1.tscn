@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://w0c6vdmscu6x"]
+[gd_scene load_steps=11 format=3 uid="uid://w0c6vdmscu6x"]
 
 [ext_resource type="PackedScene" uid="uid://d3m38oqbwd316" path="res://entities/player/player.tscn" id="1_vn7o3"]
+[ext_resource type="PackedScene" uid="uid://ct5jms772pair" path="res://entities/enemies/enemy_1.tscn" id="2_jirdo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_57e5w"]
 size = Vector3(1000, 1, 1000)
@@ -60,5 +61,24 @@ shape = SubResource("BoxShape3D_vn7o3")
 mesh = SubResource("BoxMesh_jirdo")
 skeleton = NodePath("../..")
 
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="envirenment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.019497, 0, -0.5777159)
+shape = SubResource("BoxShape3D_vn7o3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="envirenment/CollisionShape3D3"]
+mesh = SubResource("BoxMesh_jirdo")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="envirenment"]
+transform = Transform3D(0.013543386, 0, -0.99990827, 0, 1, 0, 0.99990827, 0, 0.013543386, 0.85666656, 0, -25.932762)
+shape = SubResource("BoxShape3D_vn7o3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="envirenment/CollisionShape3D4"]
+mesh = SubResource("BoxMesh_jirdo")
+skeleton = NodePath("../..")
+
 [node name="player" parent="." instance=ExtResource("1_vn7o3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.8049538, 0)
+
+[node name="enemy_1" parent="." instance=ExtResource("2_jirdo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.586721, 2.586442, 0)

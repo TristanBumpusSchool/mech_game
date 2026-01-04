@@ -1,6 +1,54 @@
-[gd_scene load_steps=2 format=3 uid="uid://ct5jms772pair"]
+[gd_scene load_steps=7 format=3 uid="uid://ct5jms772pair"]
 
 [ext_resource type="Script" uid="uid://uwt8gped1sux" path="res://scripts/enemy_1.gd" id="1_i3l3x"]
+[ext_resource type="PackedScene" uid="uid://ct6cswrdhb0w1" path="res://entities/player/joint.tscn" id="2_1n511"]
+[ext_resource type="PackedScene" uid="uid://j67o6socn4pl" path="res://entities/player/arm_2.tscn" id="3_2icl4"]
+[ext_resource type="PackedScene" uid="uid://brpbx3w0fsowt" path="res://entities/player/arm_1.tscn" id="4_c0rnx"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_avfok"]
+radius = 1.0
+height = 4.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tsfxc"]
+radius = 1.0
+height = 4.0
 
 [node name="enemy_1" type="CharacterBody3D"]
 script = ExtResource("1_i3l3x")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_avfok")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_tsfxc")
+
+[node name="joint" parent="." instance=ExtResource("2_1n511")]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 1.07, 1.15, 0)
+
+[node name="placement" type="Node3D" parent="joint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0, 0)
+
+[node name="arm" parent="joint/placement" instance=ExtResource("3_2icl4")]
+
+[node name="joint2" parent="." instance=ExtResource("2_1n511")]
+transform = Transform3D(-3.090862e-08, 3.090862e-08, -1, 0.70710677, 0.70710677, 0, 0.70710677, -0.70710677, -4.371139e-08, -1.07, 1.15, 0)
+
+[node name="placement" type="Node3D" parent="joint2"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.25, 0, -0.019)
+
+[node name="arm" parent="joint2/placement" instance=ExtResource("4_c0rnx")]
+fire = 0
+
+[node name="front" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="left" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="right" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+
+[node name="timers" type="Node3D" parent="."]
+
+[node name="jump_timer" type="Timer" parent="timers"]
+one_shot = true

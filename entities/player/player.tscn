@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3m38oqbwd316"]
+[gd_scene load_steps=9 format=3 uid="uid://d3m38oqbwd316"]
 
 [ext_resource type="Script" uid="uid://bdnlpkk8e2k46" path="res://scripts/player.gd" id="1_symyc"]
 [ext_resource type="PackedScene" uid="uid://brpbx3w0fsowt" path="res://entities/player/arm_1.tscn" id="2_abrql"]
 [ext_resource type="PackedScene" uid="uid://ct6cswrdhb0w1" path="res://entities/player/joint.tscn" id="2_sglur"]
 [ext_resource type="PackedScene" uid="uid://j67o6socn4pl" path="res://entities/player/arm_2.tscn" id="4_bls4j"]
+[ext_resource type="PackedScene" uid="uid://78se45loude4" path="res://gui/gui.tscn" id="5_fkugw"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_sfv1e"]
 radius = 1.0
@@ -13,11 +14,17 @@ height = 4.0
 radius = 1.0
 height = 4.0
 
+[sub_resource type="SphereMesh" id="SphereMesh_fkugw"]
+radius = 2.0
+height = 4.0
+
 [node name="player" type="CharacterBody3D"]
 script = ExtResource("1_symyc")
 accel = 0.5
 jump_time = 0.3
 jump_speed = 10.0
+
+[node name="gui" parent="." instance=ExtResource("5_fkugw")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_sfv1e")
@@ -30,8 +37,17 @@ transform = Transform3D(1, 0, 0, 0, 0.8528407, 0.5221712, 0, -0.5221712, 0.85284
 spring_length = 5.0
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
-transform = Transform3D(1, 0, 0, 0, 0.8528407, -0.5221712, 0, 0.5221712, 0.8528407, 0, 0.104, 4.731)
+transform = Transform3D(1, 0, 0, 0, 0.8528407, -0.5221712, 0, 0.5221712, 0.8528407, 0, 0.103999615, 4.731001)
 current = true
+
+[node name="SpringArm3D" type="SpringArm3D" parent="SpringArm3D/Camera3D"]
+spring_length = -100.0
+
+[node name="target" type="Node3D" parent="SpringArm3D/Camera3D/SpringArm3D" groups=["target"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -100)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SpringArm3D/Camera3D/SpringArm3D/target"]
+mesh = SubResource("SphereMesh_fkugw")
 
 [node name="joint" parent="." instance=ExtResource("2_sglur")]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 1.07, 1.15, 0)
@@ -48,6 +64,7 @@ transform = Transform3D(-3.090862e-08, 3.090862e-08, -1, 0.70710677, 0.70710677,
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.25, 0, -0.019)
 
 [node name="arm" parent="joint2/placement" instance=ExtResource("2_abrql")]
+fire = 0
 
 [node name="front" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
