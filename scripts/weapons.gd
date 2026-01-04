@@ -6,7 +6,7 @@ extends CharacterBody3D
 @export var bullet = ""
 @export var hp = 100
 @export var damage = 100
-@onready var player = get_tree().get_first_node_in_group("p")
+@onready var target = get_parent().get_parent().get_parent()
 
 
 func damaged(d):
@@ -24,10 +24,10 @@ func _process(delta: float) -> void:
 			var b = load(bullet)
 			var bul = b.instantiate()
 			bul.global_position = $bullet_source.global_position
-			if player.target == Vector3.ZERO:
+			if target.target == Vector3.ZERO:
 				bul.target = ($bullet_target.global_position - $bullet_source.global_position).normalized()
 			else:
-				bul.target = (player.target - $bullet_source.global_position).normalized()
+				bul.target = (target.target - $bullet_source.global_position).normalized()
 			
 			get_tree().current_scene.add_child(bul)
 			fire -= 1

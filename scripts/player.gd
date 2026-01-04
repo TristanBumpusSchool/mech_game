@@ -76,20 +76,25 @@ func animation():
 		if $joint2/placement/arm.type == 1:
 			if Input.is_action_just_pressed("click"):
 				var left_arm = create_tween()
-				left_arm.tween_property($joint2,"rotation_degrees",Vector3(0,-90,0), .2)
+				left_arm.tween_property($joint2,"rotation_degrees",Vector3(0,0,0), .2)
 				left_arm.tween_property($joint2/placement/arm,"firering",true, .2)
+			if Input.is_action_pressed("click"):
+				if $SpringArm3D/Camera3D/RayCast3D.is_colliding():
+					$joint2.look_at($SpringArm3D/Camera3D/RayCast3D.get_collision_point())
+				else:
+					$joint2.rotation_degrees = Vector3(0,0,0)
 			if Input.is_action_just_released("click"):
 				$joint2/placement/arm.firering = false
 				var left_arm = create_tween()
-				left_arm.tween_property($joint2,"rotation_degrees",Vector3(0,-90,45), .2)
+				left_arm.tween_property($joint2,"rotation_degrees",Vector3(-45,0,0), .2)
 			#endregion
-		#region Left arm range type
+		#region Left arm melee type
 		if $joint2/placement/arm.type == 0:
 			if Input.is_action_just_pressed("click"):
 				var left_arm = create_tween()
-				left_arm.tween_property($joint2,"rotation_degrees",Vector3(0,-90,-90), .3)
-				left_arm.tween_property($joint2,"rotation_degrees",Vector3(0,-90,45), .1)
-				left_arm.tween_property($joint2,"rotation_degrees",Vector3(0,0,0), .2)
+				left_arm.tween_property($joint2,"rotation_degrees",Vector3(45,0,0), .3)
+				left_arm.tween_property($joint2,"rotation_degrees",Vector3(-45,0,0), .1)
+				left_arm.tween_property($joint2,"rotation_degrees",Vector3(0,90,0), .2)
 			#endregion
 	if $joint/placement/arm != null:
 		#region Right arm range type
@@ -97,19 +102,24 @@ func animation():
 			if Input.is_action_just_pressed("r_click"):
 				var right_arm = create_tween()
 				right_arm.tween_property($joint/placement/arm,"firering",true, .2)
-				right_arm.tween_property($joint,"rotation_degrees",Vector3(0,90,0), .2)
+				right_arm.tween_property($joint,"rotation_degrees",Vector3(0,0,0), .2)
+			if Input.is_action_pressed("r_click"):
+				if $SpringArm3D/Camera3D/RayCast3D.is_colliding():
+					$joint.look_at($SpringArm3D/Camera3D/RayCast3D.get_collision_point())
+				else:
+					$joint2.rotation_degrees = Vector3(0,0,0)
 			if Input.is_action_just_released("r_click"):
 				$joint/placement/arm.firering = false
 				var right_arm = create_tween()
-				right_arm.tween_property($joint,"rotation_degrees",Vector3(0,0,0), .2)
+				right_arm.tween_property($joint,"rotation_degrees",Vector3(-45,0,0), .2)
 			#endregion
 		#region Right arm range type
 		if $joint/placement/arm.type == 0:
 			if Input.is_action_just_pressed("r_click"):
 				var right_arm = create_tween()
-				right_arm.tween_property($joint,"rotation_degrees",Vector3(0,90,90), .3)
-				right_arm.tween_property($joint,"rotation_degrees",Vector3(0,90,-45), .1)
-				right_arm.tween_property($joint,"rotation_degrees",Vector3(0,0,0), .2)
+				right_arm.tween_property($joint,"rotation_degrees",Vector3(45,0,0), .3)
+				right_arm.tween_property($joint,"rotation_degrees",Vector3(-45,0,0), .1)
+				right_arm.tween_property($joint,"rotation_degrees",Vector3(0,-90,0), .2)
 			#endregion
 
 
@@ -121,7 +131,6 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	
-	#print(speed)
 	
 	if $SpringArm3D/Camera3D/RayCast3D.is_colliding():
 		target = $SpringArm3D/Camera3D/RayCast3D.get_collision_point()

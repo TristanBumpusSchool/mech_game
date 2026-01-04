@@ -14,9 +14,9 @@ size = Vector3(0.1, 4, 0.1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_b21oe"]
 size = Vector3(0.1, 4, 0.1)
 
-[node name="arm" type="CharacterBody3D"]
+[node name="arm" type="CharacterBody3D" groups=["arm", "melee"]]
 collision_layer = 6
-collision_mask = 6
+collision_mask = 2
 script = ExtResource("1_b21oe")
 type = 0
 

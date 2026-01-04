@@ -94,9 +94,9 @@ _data = {
 &"fire": SubResource("Animation_bpuo5")
 }
 
-[node name="arm" type="CharacterBody3D"]
+[node name="arm" type="CharacterBody3D" groups=["arm", "ranged"]]
 collision_layer = 6
-collision_mask = 6
+collision_mask = 2
 script = ExtResource("1_fx4ld")
 type = 1
 bullet = "res://entities/bullet/bullet_1.tscn"

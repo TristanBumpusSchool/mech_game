@@ -23,6 +23,9 @@ global="*res://scripts/global.gd"
 
 target=""
 p=""
+arm=""
+ranged=""
+melee=""
 
 [input]
 
