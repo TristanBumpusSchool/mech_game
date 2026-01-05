@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0he7vpclwsk"]
+
+[ext_resource type="PackedScene" uid="uid://b41t6lfbiornh" path="res://assets/arms/bullet.fbx" id="1_gsrbi"]
+[ext_resource type="Material" uid="uid://gn18p5fhpqsq" path="res://assets/mats/bullet.tres" id="2_0rrg6"]
+
+[node name="bullet" instance=ExtResource("1_gsrbi")]
+
+[node name="pPlatonic2" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_0rrg6")

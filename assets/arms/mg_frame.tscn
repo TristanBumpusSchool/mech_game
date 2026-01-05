@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0ef1iclo3nm"]
+
+[ext_resource type="PackedScene" uid="uid://skkqmsocd2u" path="res://assets/arms/mgFrame.fbx" id="1_4ekyk"]
+[ext_resource type="Material" uid="uid://nf787ru7bmyj" path="res://assets/mats/mat_metal_light.tres" id="2_4ekyk"]
+
+[node name="mgFrame" instance=ExtResource("1_4ekyk")]
+
+[node name="pCube75" parent="." index="4"]
+surface_material_override/0 = ExtResource("2_4ekyk")

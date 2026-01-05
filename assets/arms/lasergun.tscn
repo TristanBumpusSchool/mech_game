@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://ci7yft0avabs3"]
+
+[ext_resource type="PackedScene" uid="uid://di8n7e2qbp7a" path="res://assets/arms/lasergun.fbx" id="1_yqe7e"]
+[ext_resource type="Material" uid="uid://0cjqky1h1biu" path="res://assets/mats/mat_metal_dark.tres" id="2_3umhl"]
+[ext_resource type="Material" uid="uid://bjacqr078j44" path="res://assets/mats/copper.tres" id="3_5u5dp"]
+[ext_resource type="Material" uid="uid://nf787ru7bmyj" path="res://assets/mats/mat_metal_light.tres" id="4_lfln0"]
+
+[node name="lasergun" instance=ExtResource("1_yqe7e")]
+
+[node name="pCylinder103" parent="group6" index="0"]
+surface_material_override/0 = ExtResource("2_3umhl")
+
+[node name="sweep3" parent="group6" index="1"]
+surface_material_override/0 = ExtResource("3_5u5dp")
+
+[node name="pCube71" parent="group6" index="2"]
+surface_material_override/0 = ExtResource("4_lfln0")

@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnlua2swg4tst"]
+
+[ext_resource type="Texture2D" uid="uid://bg62x5pehhwqe" path="res://assets/arms/arche.png" id="1_jvio4"]
+[ext_resource type="Script" uid="uid://b4b1o6qhi2s7i" path="res://entities/player/arm_g_launcher/3_dpath.gd" id="1_wi5eg"]
+[ext_resource type="PackedScene" uid="uid://b3x6bfd6kngww" path="res://entities/bullet/explosive_bullet.tscn" id="3_vlb7c"]
+
+[sub_resource type="Curve3D" id="Curve3D_wi5eg"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.05141014, 0.22238907, 0, 0, 0, 0, 0, 0, 0, 0.20124549, 0.45344657, 0, 0, 0, 0, 0, 0, 0, 0.6215177, 0.61640984, 0, 0, 0, 0, 0, 0, 0, 0.9469206, 0.50900996, 5.9604645e-08, 0, 0, 0, 0, 0, 0, 1.1608341, 0.31831014, -5.9604645e-08, 0, 0, 0, 0, 0, 0, 1.2326837, 0, 0),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
+
+[node name="3dpath" type="Node3D"]
+script = ExtResource("1_wi5eg")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6434804, 0.31755173, 0)
+modulate = Color(1, 1, 1, 0.1882353)
+texture_filter = 0
+texture = ExtResource("1_jvio4")
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.026202887, 0.008494452, 0)
+curve = SubResource("Curve3D_wi5eg")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-1.5321159e-07, -0.97429925, -0.22523063, -2.9802314e-08, 0.22523063, -0.97429925, 1, -1.4256152e-07, -6.354431e-08, 0, 0, 0)
+loop = false
+
+[node name="explosive_bullet" parent="Path3D/PathFollow3D" instance=ExtResource("3_vlb7c")]
+transform = Transform3D(0.1640307, 1.7763568e-15, 0, -3.5527137e-15, 0.16403072, 1.4859683e-15, 1.7763568e-15, 1.485968e-15, 0.16403072, 0, 0, 0)

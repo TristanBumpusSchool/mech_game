@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://smi7jmkcyjwm"]
+
+[ext_resource type="PackedScene" uid="uid://6wldi0ckj4oa" path="res://assets/arms/explosion.fbx" id="1_3mqjm"]
+[ext_resource type="Material" uid="uid://gn18p5fhpqsq" path="res://assets/mats/bullet.tres" id="2_35m3g"]
+
+[node name="explosion" instance=ExtResource("1_3mqjm")]
+
+[node name="pPlatonic3" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_35m3g")

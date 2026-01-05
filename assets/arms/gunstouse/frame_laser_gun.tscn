@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://caba2c304spwy"]
+
+[ext_resource type="PackedScene" uid="uid://ci7yft0avabs3" path="res://assets/arms/lasergun.tscn" id="1_kj8of"]
+
+[node name="frame_laser_gun" type="Node3D"]
+
+[node name="lasergun2" parent="." instance=ExtResource("1_kj8of")]
+transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, -1.4259014, 0, 1.0544887)

@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://du1sakh444ask"]
+
+[ext_resource type="PackedScene" uid="uid://cncstc81nhs4i" path="res://assets/body/body.fbx" id="1_bfv4e"]
+[ext_resource type="Material" uid="uid://nf787ru7bmyj" path="res://assets/mats/mat_metal_light.tres" id="2_hvvgp"]
+[ext_resource type="Material" uid="uid://0cjqky1h1biu" path="res://assets/mats/mat_metal_dark.tres" id="3_g0f2a"]
+
+[node name="body" instance=ExtResource("1_bfv4e")]
+
+[node name="pCylinder25" parent="." index="4"]
+surface_material_override/0 = ExtResource("2_hvvgp")
+
+[node name="polySurface1" parent="." index="5"]
+surface_material_override/0 = ExtResource("3_g0f2a")

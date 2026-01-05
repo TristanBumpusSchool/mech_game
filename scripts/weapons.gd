@@ -9,7 +9,7 @@ extends RigidBody3D
 @export var self_for_death = ""
 @onready var target = get_parent().get_parent().get_parent()
 
-
+var scrollpos:=0.0
 
 func death_animation():
 	if type != 2:
@@ -32,6 +32,7 @@ func damaged(d):
 
 
 func _process(delta: float) -> void:
+	control_range()
 	if type == 1:
 		if firering:
 			$AnimationPlayer.play("fire")
@@ -49,6 +50,19 @@ func _process(delta: float) -> void:
 
 
 
+
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.has_method("damaged"):
 		body.damaged(damage)
+
+func control_range():
+	#changes scale of the sprite therefore trajectory
+	if Input.is_action_just_released("scroll_down"):
+		scrollpos-=0.5
+	if Input.is_action_just_released("scroll_up"):
+		scrollpos+=0.5
+	scrollpos = clampf(scrollpos,1.0,20.0)
+	if $trajectory!=null:
+		$trajectory.scale.x=scrollpos
+	#$trajectory.scale.x=scrollpos
+	
