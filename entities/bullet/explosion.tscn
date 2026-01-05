@@ -1,33 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://vr45qefl1knc"]
+[gd_scene load_steps=7 format=3 uid="uid://dpvjavcoho8y8"]
 
+[ext_resource type="Script" uid="uid://c2s3dlmqnaps" path="res://scripts/bullet.gd" id="1_3mqjm"]
 [ext_resource type="PackedScene" uid="uid://smi7jmkcyjwm" path="res://assets/arms/explosion.tscn" id="1_u4d5k"]
-
-[sub_resource type="Animation" id="Animation_u4d5k"]
-resource_name = "explosion"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("frame:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.02, 0.26666668, 0.6666667),
-"transitions": PackedFloat32Array(1, 1, 0.2679433, 0.13869615),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(25, 25, 25), Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("frame:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.06666667, 0.13, 0.37),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-1.2277837, 0.848283, -2.105474), Vector3(-0.38150054, -0.80003536, -1.8212982)]
-}
 
 [sub_resource type="Animation" id="Animation_3mqjm"]
 length = 0.001
@@ -55,6 +29,58 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area3D/CollisionShape3D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_u4d5k"]
+resource_name = "explosion"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("frame:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.26666668, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 0.2679433, 0.13869615),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(25, 25, 25), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("frame:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13, 0.37),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-1.2277837, 0.848283, -2.105474), Vector3(-0.38150054, -0.80003536, -1.8212982)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area3D/CollisionShape3D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.26666668, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 0.2679433, 0.13869615),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(1.1, 1.1, 1.1), Vector3(0, 0, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_35m3g"]
 _data = {
@@ -65,7 +91,9 @@ _data = {
 [sub_resource type="SphereShape3D" id="SphereShape3D_u4d5k"]
 radius = 1.7242376
 
-[node name="explosion" type="Node3D"]
+[node name="explosion" type="CharacterBody3D"]
+script = ExtResource("1_3mqjm")
+damage = 10
 
 [node name="frame" type="Node3D" parent="."]
 transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 0, 0, 0)
@@ -83,3 +111,9 @@ autoplay = "explosion"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_u4d5k")
+
+[node name="death_time" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

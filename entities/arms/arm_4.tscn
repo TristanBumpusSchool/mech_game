@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://dhdm7onrnrohw"]
+
+[ext_resource type="Script" uid="uid://bq5iay0ilgha2" path="res://scripts/weapons.gd" id="1_gulbx"]
+[ext_resource type="PackedScene" uid="uid://ci7yft0avabs3" path="res://assets/arms/lasergun.tscn" id="1_pd253"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gulbx"]
+size = Vector3(3.3755493, 0.8520508, 0.93566895)
+
+[sub_resource type="Animation" id="Animation_gulbx"]
+resource_name = "fire"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:fire")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_dcp60"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:fire")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gjdi0"]
+_data = {
+&"RESET": SubResource("Animation_dcp60"),
+&"fire": SubResource("Animation_gulbx")
+}
+
+[node name="arm" type="RigidBody3D"]
+gravity_scale = 0.0
+sleeping = true
+script = ExtResource("1_gulbx")
+type = 1
+fire = 1
+bullet = "res://entities/bullet/laser_bullet.tscn"
+self_for_death = "res://entities/arms/arm_4.tscn"
+
+[node name="lasergun2" parent="." instance=ExtResource("1_pd253")]
+transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, -1.1698561, -1.3416779, 1.0544884)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5711365, 0.022705078, 0.016174316)
+shape = SubResource("BoxShape3D_gulbx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_gjdi0")
+}
+
+[node name="bullet_source" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7800252, -0.04624474, 0)
+
+[node name="bullet_target" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.284185, -0.04624474, 0)

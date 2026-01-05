@@ -1,0 +1,127 @@
+[gd_scene load_steps=8 format=3 uid="uid://qt0w1d75j7h3"]
+
+[ext_resource type="PackedScene" uid="uid://b0ef1iclo3nm" path="res://assets/arms/mg_frame.tscn" id="1_dfkyh"]
+[ext_resource type="Script" uid="uid://bq5iay0ilgha2" path="res://scripts/weapons.gd" id="1_hm6w8"]
+[ext_resource type="PackedScene" uid="uid://cv5c8o16p5aqp" path="res://assets/arms/a_acanon.tscn" id="2_hm6w8"]
+
+[sub_resource type="Animation" id="Animation_hm6w8"]
+resource_name = "fire"
+length = 0.75
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:fire")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.25, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1, 0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AAcanon2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.25, 0.375, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1.2649032, -0.4480493, 0.04137796), Vector3(1, -0.448, 0.041), Vector3(1.2649032, -0.4480493, 0.04137796)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AAcanon3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 0.625, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1.3289787, 0.38733268, 0.04137796), Vector3(1, 0.387, 0.041), Vector3(1.3289787, 0.38733268, 0.04137796)]
+}
+
+[sub_resource type="Animation" id="Animation_3swat"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:fire")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AAcanon2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.2649032, -0.4480493, 0.04137796)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AAcanon3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.3289787, 0.38733268, 0.04137796)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3swat"]
+_data = {
+&"RESET": SubResource("Animation_3swat"),
+&"fire": SubResource("Animation_hm6w8")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hm6w8"]
+size = Vector3(1.4279785, 1.2736816, 0.8552246)
+
+[node name="arm" type="RigidBody3D"]
+gravity_scale = 0.0
+sleeping = true
+script = ExtResource("1_hm6w8")
+type = 1
+fire = 1
+bullet = "res://entities/bullet/bullet_1.tscn"
+self_for_death = "res://entities/arms/arm_3.tscn"
+
+[node name="mgFrame3" parent="." instance=ExtResource("1_dfkyh")]
+transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 9.973012, -0.05231273, -5.8309507)
+
+[node name="AAcanon2" parent="." instance=ExtResource("2_hm6w8")]
+transform = Transform3D(23.38768, 0, 0, 0, 11.68976, 0, 0, 0, 11.68976, 1.2649032, -0.4480493, 0.04137796)
+
+[node name="AAcanon3" parent="." instance=ExtResource("2_hm6w8")]
+transform = Transform3D(23.38768, 0, 0, 0, -11.689759, 1.0219512e-06, 0, -1.0219512e-06, -11.689759, 1.3289787, 0.38733268, 0.04137796)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3swat")
+}
+
+[node name="bullet_source" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5310628, -0.04624474, 0)
+
+[node name="bullet_target" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.284185, -0.04624474, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08850098, 0.04333496, 0.016967773)
+shape = SubResource("BoxShape3D_hm6w8")

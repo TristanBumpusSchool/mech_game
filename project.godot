@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Titanfall_like"
-run/main_scene="uid://w0c6vdmscu6x"
+run/main_scene="uid://bl43427l4dm5o"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 

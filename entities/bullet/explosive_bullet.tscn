@@ -1,23 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3x6bfd6kngww"]
+[gd_scene load_steps=4 format=3 uid="uid://b3x6bfd6kngww"]
 
 [ext_resource type="PackedScene" uid="uid://d0he7vpclwsk" path="res://assets/arms/bullet.tscn" id="1_hjpbc"]
+[ext_resource type="Script" uid="uid://c2s3dlmqnaps" path="res://scripts/bullet.gd" id="1_lsly1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lsly1"]
-size = Vector3(0.347229, 0.30267334, 0.44555664)
+size = Vector3(0.347229, 0.30267334, 1.4353638)
 
-[node name="explosive_bullet" type="Node3D"]
+[node name="explosive_bullet" type="CharacterBody3D"]
+script = ExtResource("1_lsly1")
+damage = 20
+explosion = "res://entities/bullet/explosion.tscn"
 
 [node name="Area3D" type="Area3D" parent="." groups=["player_bullet"]]
 collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" groups=["player_bullet"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.007171631, -0.008636475, -0.13244629)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.007171631, -0.008636475, 0.22653198)
 shape = SubResource("BoxShape3D_lsly1")
+
+[node name="bullet2" parent="." instance=ExtResource("1_hjpbc")]
+transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, -2.1558225, 0, -0.26725054)
 
 [node name="death_time" type="Timer" parent="."]
 wait_time = 20.0
 autostart = true
 
-[node name="bullet2" parent="." instance=ExtResource("1_hjpbc")]
-transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, -2.1558225, 0, -0.26725054)
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

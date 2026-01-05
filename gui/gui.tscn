@@ -26,9 +26,10 @@ texture = ExtResource("1_yw5qc")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="arm_1" type="TextureProgressBar" parent="."]
+[node name="hp_bar" type="Node2D" parent="."]
+
+[node name="arm_1" type="TextureProgressBar" parent="hp_bar"]
 texture_filter = 1
-layout_mode = 1
 offset_right = 32.0
 offset_bottom = 32.0
 scale = Vector2(3, 3)
@@ -38,9 +39,8 @@ texture_under = ExtResource("2_ioifv")
 texture_progress = ExtResource("2_ioifv")
 tint_progress = Color(0, 1, 0, 1)
 
-[node name="arm_2" type="TextureProgressBar" parent="."]
+[node name="arm_2" type="TextureProgressBar" parent="hp_bar"]
 texture_filter = 1
-layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 scale = Vector2(3, 3)
@@ -49,9 +49,8 @@ texture_under = ExtResource("3_q46mf")
 texture_progress = ExtResource("3_q46mf")
 tint_progress = Color(0, 1, 0, 1)
 
-[node name="leg_1" type="TextureProgressBar" parent="."]
+[node name="leg_1" type="TextureProgressBar" parent="hp_bar"]
 texture_filter = 1
-layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 scale = Vector2(3, 3)
@@ -60,9 +59,8 @@ texture_under = ExtResource("4_hp187")
 texture_progress = ExtResource("4_hp187")
 tint_progress = Color(0, 1, 0, 1)
 
-[node name="leg_2" type="TextureProgressBar" parent="."]
+[node name="leg_2" type="TextureProgressBar" parent="hp_bar"]
 texture_filter = 1
-layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 scale = Vector2(3, 3)
@@ -71,9 +69,8 @@ texture_under = ExtResource("5_ytf3d")
 texture_progress = ExtResource("5_ytf3d")
 tint_progress = Color(0, 1, 0, 1)
 
-[node name="joint_1" type="TextureProgressBar" parent="."]
+[node name="joint_1" type="TextureProgressBar" parent="hp_bar"]
 texture_filter = 1
-layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 scale = Vector2(3, 3)
@@ -82,9 +79,8 @@ texture_under = ExtResource("6_ytf3d")
 texture_progress = ExtResource("6_ytf3d")
 tint_progress = Color(0, 1, 0, 1)
 
-[node name="joint_2" type="TextureProgressBar" parent="."]
+[node name="joint_2" type="TextureProgressBar" parent="hp_bar"]
 texture_filter = 1
-layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 scale = Vector2(3, 3)
@@ -93,9 +89,8 @@ texture_under = ExtResource("7_bk7cs")
 texture_progress = ExtResource("7_bk7cs")
 tint_progress = Color(0, 1, 0, 1)
 
-[node name="body" type="TextureProgressBar" parent="."]
+[node name="body" type="TextureProgressBar" parent="hp_bar"]
 texture_filter = 1
-layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 scale = Vector2(3, 3)

@@ -484,4 +484,8 @@ libraries = {
 wait_time = 3.0
 one_shot = true
 
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="."]
+aabb = AABB(-0.61814487, -0.67656875, -0.61318856, 1.2362897, 1.3531375, 1.2263771)
+enable_node_path = NodePath("../meshes")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -21,7 +21,6 @@ func _process(delta: float) -> void:
 	#if $joint/placement/arm.type == 1:
 	$NavigationAgent3D.target_position = player.global_position
 	
-	print(targets)
 	
 	has_range = false
 	

@@ -1,12 +1,12 @@
 [gd_scene load_steps=13 format=3 uid="uid://d3m38oqbwd316"]
 
 [ext_resource type="Script" uid="uid://bdnlpkk8e2k46" path="res://scripts/player.gd" id="1_symyc"]
-[ext_resource type="PackedScene" uid="uid://brpbx3w0fsowt" path="res://entities/player/arm_1.tscn" id="2_abrql"]
 [ext_resource type="PackedScene" uid="uid://ct6cswrdhb0w1" path="res://entities/player/joint.tscn" id="2_sglur"]
 [ext_resource type="PackedScene" uid="uid://du1sakh444ask" path="res://assets/body/body.tscn" id="3_bectd"]
-[ext_resource type="PackedScene" uid="uid://j67o6socn4pl" path="res://entities/player/arm_2.tscn" id="4_bls4j"]
 [ext_resource type="PackedScene" uid="uid://cx6v88qcxfsli" path="res://assets/body/waist.tscn" id="4_wvtmh"]
 [ext_resource type="PackedScene" uid="uid://78se45loude4" path="res://gui/gui.tscn" id="5_fkugw"]
+[ext_resource type="PackedScene" uid="uid://qt0w1d75j7h3" path="res://entities/arms/arm_3.tscn" id="6_bectd"]
+[ext_resource type="PackedScene" uid="uid://dhdm7onrnrohw" path="res://entities/arms/arm_4.tscn" id="7_bectd"]
 [ext_resource type="PackedScene" uid="uid://dab77qiywfdfi" path="res://assets/body/leg.tscn" id="8_7thud"]
 [ext_resource type="Material" uid="uid://dbptf672i445x" path="res://assets/mats/vanta.tres" id="9_a1qjk"]
 
@@ -67,20 +67,20 @@ target_position = Vector3(0, 0, -100)
 collision_mask = 7
 
 [node name="joint" parent="." instance=ExtResource("2_sglur")]
-transform = Transform3D(-4.371139e-08, 0, -0.99999994, 0, 0.99999994, 0, 1, 0, -4.3711385e-08, 1.07, 1.15, 0)
+transform = Transform3D(-4.371139e-08, 0, -0.99999994, 0, 0.99999994, 0, 1, 0, -4.3711385e-08, 1.6, 1.25, 0)
 
 [node name="placement" type="Node3D" parent="joint"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -1.25)
 
-[node name="arm" parent="joint/placement" instance=ExtResource("4_bls4j")]
+[node name="arm" parent="joint/placement" instance=ExtResource("6_bectd")]
 
 [node name="joint2" parent="." instance=ExtResource("2_sglur")]
-transform = Transform3D(0.99999994, 0, 0, 0, 0.7071067, 0.7071067, 0, -0.7071067, 0.7071067, -1.07, 1.15, 0)
+transform = Transform3D(0.99999994, 0, 0, 0, 0.7071067, 0.7071067, 0, -0.7071067, 0.7071067, -1.6, 1.25, 0)
 
 [node name="placement" type="Node3D" parent="joint2"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -1.25)
 
-[node name="arm" parent="joint2/placement" instance=ExtResource("2_abrql")]
+[node name="arm" parent="joint2/placement" instance=ExtResource("7_bectd")]
 
 [node name="front" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)

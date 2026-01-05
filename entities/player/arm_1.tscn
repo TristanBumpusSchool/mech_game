@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://brpbx3w0fsowt"]
+[gd_scene load_steps=10 format=3 uid="uid://brpbx3w0fsowt"]
 
 [ext_resource type="Script" uid="uid://bq5iay0ilgha2" path="res://scripts/weapons.gd" id="1_fx4ld"]
 [ext_resource type="PackedScene" uid="uid://dvmx33o7cstu0" path="res://assets/arms/AAbolt.fbx" id="2_xn76u"]
 [ext_resource type="PackedScene" uid="uid://yo7arhytthvn" path="res://assets/arms/a_aframe.tscn" id="3_0ydaa"]
 [ext_resource type="PackedScene" uid="uid://cv5c8o16p5aqp" path="res://assets/arms/a_acanon.tscn" id="5_xn76u"]
-[ext_resource type="Texture2D" uid="uid://bg62x5pehhwqe" path="res://assets/arms/arche.png" id="6_xn76u"]
 [ext_resource type="PackedScene" uid="uid://byew71hn3g7f6" path="res://assets/arms/a_abolt.tscn" id="7_bpuo5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fx4ld"]
@@ -102,7 +101,8 @@ gravity_scale = 0.0
 sleeping = true
 script = ExtResource("1_fx4ld")
 type = 1
-bullet = "res://entities/bullet/bullet_1.tscn"
+fire = false
+bullet = "res://entities/bullet/explosive_bullet.tscn"
 self_for_death = "res://entities/player/arm_1.tscn"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -129,12 +129,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.284185, -0.04624474, 0)
 
 [node name="AAbolt2" parent="." instance=ExtResource("7_bpuo5")]
 transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 1.3379395, -1.2708352, 0.002523899)
-
-[node name="trajectory" type="Sprite3D" parent="."]
-transform = Transform3D(11.7830515, 0, 0, 0, 11.7830515, 0, 0, 0, 1, 2.8214164, -0.067388654, 0)
-centered = false
-texture_filter = 0
-texture = ExtResource("6_xn76u")
-
-[node name="Marker3D" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9494176, 0, 0)
