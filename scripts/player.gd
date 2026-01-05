@@ -10,6 +10,11 @@ extends CharacterBody3D
 @export var target = Vector3.ZERO
 @export var hp = 300
 
+
+
+func damaged(d):
+	hp -= d
+
 func cam_rotation():
 	var temp = rotation.y
 	temp += -Input.get_last_mouse_screen_velocity().x / cam_sensativity
@@ -126,6 +131,8 @@ func animation():
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	$joint/placement/arm.add_to_group("p")
+	$joint2/placement/arm.add_to_group("p")
 
 
 

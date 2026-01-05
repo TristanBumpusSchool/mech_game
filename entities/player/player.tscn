@@ -21,7 +21,8 @@ accel = 0.5
 jump_time = 0.3
 jump_speed = 10.0
 
-[node name="gui" parent="." instance=ExtResource("5_fkugw")]
+[node name="gui" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_fkugw")]
+player = NodePath("..")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_sfv1e")

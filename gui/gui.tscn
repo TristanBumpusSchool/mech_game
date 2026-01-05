@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://78se45loude4"]
+[gd_scene load_steps=10 format=3 uid="uid://78se45loude4"]
 
+[ext_resource type="Script" uid="uid://dd0ghq8dagtrs" path="res://scripts/gui.gd" id="1_xqkfk"]
 [ext_resource type="Texture2D" uid="uid://c8mfrw8eshfk7" path="res://assets/gui/crosshair_128x128.png" id="1_yw5qc"]
+[ext_resource type="Texture2D" uid="uid://bbrtqra6njscc" path="res://assets/gui/hp_bar_arm_1.png" id="2_ioifv"]
+[ext_resource type="Texture2D" uid="uid://kypkjl3jdvvl" path="res://assets/gui/hp_bar_arm_2.png" id="3_q46mf"]
+[ext_resource type="Texture2D" uid="uid://du8tixx2u3khx" path="res://assets/gui/hp_bar_leg_1.png" id="4_hp187"]
+[ext_resource type="Texture2D" uid="uid://cfo3lcgjxo5ey" path="res://assets/gui/hp_bar_leg_2.png" id="5_ytf3d"]
+[ext_resource type="Texture2D" uid="uid://8jxd0egtqg6m" path="res://assets/gui/hp_bar_joint_1.png" id="6_ytf3d"]
+[ext_resource type="Texture2D" uid="uid://d0l401ya3wtgd" path="res://assets/gui/hp_bar_joint_2.png" id="7_bk7cs"]
+[ext_resource type="Texture2D" uid="uid://eyyh1c34u6gc" path="res://assets/gui/hp_bar_body.png" id="8_kvi6p"]
 
 [node name="gui" type="Control"]
 layout_mode = 3
@@ -9,6 +17,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_xqkfk")
 
 [node name="Crosshair128x128" type="Sprite2D" parent="."]
 position = Vector2(576, 324)
@@ -16,3 +25,81 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_yw5qc")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="arm_1" type="TextureProgressBar" parent="."]
+texture_filter = 1
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+scale = Vector2(3, 3)
+value = 100.0
+fill_mode = 3
+texture_under = ExtResource("2_ioifv")
+texture_progress = ExtResource("2_ioifv")
+tint_progress = Color(0, 1, 0, 1)
+
+[node name="arm_2" type="TextureProgressBar" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+scale = Vector2(3, 3)
+fill_mode = 3
+texture_under = ExtResource("3_q46mf")
+texture_progress = ExtResource("3_q46mf")
+tint_progress = Color(0, 1, 0, 1)
+
+[node name="leg_1" type="TextureProgressBar" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+scale = Vector2(3, 3)
+fill_mode = 3
+texture_under = ExtResource("4_hp187")
+texture_progress = ExtResource("4_hp187")
+tint_progress = Color(0, 1, 0, 1)
+
+[node name="leg_2" type="TextureProgressBar" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+scale = Vector2(3, 3)
+fill_mode = 3
+texture_under = ExtResource("5_ytf3d")
+texture_progress = ExtResource("5_ytf3d")
+tint_progress = Color(0, 1, 0, 1)
+
+[node name="joint_1" type="TextureProgressBar" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+scale = Vector2(3, 3)
+fill_mode = 3
+texture_under = ExtResource("6_ytf3d")
+texture_progress = ExtResource("6_ytf3d")
+tint_progress = Color(0, 1, 0, 1)
+
+[node name="joint_2" type="TextureProgressBar" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+scale = Vector2(3, 3)
+fill_mode = 3
+texture_under = ExtResource("7_bk7cs")
+texture_progress = ExtResource("7_bk7cs")
+tint_progress = Color(0, 1, 0, 1)
+
+[node name="body" type="TextureProgressBar" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+scale = Vector2(3, 3)
+fill_mode = 3
+texture_under = ExtResource("8_kvi6p")
+texture_progress = ExtResource("8_kvi6p")
+tint_progress = Color(0, 1, 0, 1)

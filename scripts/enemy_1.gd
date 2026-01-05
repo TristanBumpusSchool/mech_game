@@ -21,6 +21,8 @@ func _process(delta: float) -> void:
 	#if $joint/placement/arm.type == 1:
 	$NavigationAgent3D.target_position = player.global_position
 	
+	print(targets)
+	
 	has_range = false
 	
 	for i in arms:
@@ -30,15 +32,22 @@ func _process(delta: float) -> void:
 		else:
 			arms.remove_at(arms.find(i))
 	
+<<<<<<< Updated upstream
 	for i in arms:
 		if i != null:
 			if i.type == 1:
 				has_range = true
 		else:
 			arms.remove_at(arms.find(i))
+=======
+	#Target check for null
+	for i in targets:
+		if i == null:
+			targets.remove_at(targets.find(i))
+>>>>>>> Stashed changes
 	
 	if targets.size():
-		target = targets.pick_random()
+		target = targets.pick_random().global_position
 	
 	if has_range:
 		
@@ -92,4 +101,10 @@ func _process(delta: float) -> void:
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("p"):
-		targets += [body.global_position]
+		targets += [body]
+
+
+func _on_area_3d_body_exited(body: Node3D) -> void:
+	if body != null:
+		if targets.find(body) != -1:
+			targets.remove_at(targets.find(body))
