@@ -1,17 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://d3m38oqbwd316"]
+[gd_scene load_steps=8 format=3 uid="uid://d3m38oqbwd316"]
 
 [ext_resource type="Script" uid="uid://bdnlpkk8e2k46" path="res://scripts/player.gd" id="1_symyc"]
 [ext_resource type="PackedScene" uid="uid://brpbx3w0fsowt" path="res://entities/player/arm_1.tscn" id="2_abrql"]
 [ext_resource type="PackedScene" uid="uid://ct6cswrdhb0w1" path="res://entities/player/joint.tscn" id="2_sglur"]
-[ext_resource type="PackedScene" uid="uid://cncstc81nhs4i" path="res://assets/body/body.fbx" id="3_8fjmc"]
-[ext_resource type="PackedScene" uid="uid://deuuw0ko2xk43" path="res://entities/player/body.tscn" id="3_qiwj3"]
-[ext_resource type="PackedScene" uid="uid://odahs7gv7inx" path="res://assets/body/waist.fbx" id="4_26q78"]
 [ext_resource type="PackedScene" uid="uid://j67o6socn4pl" path="res://entities/player/arm_2.tscn" id="4_bls4j"]
-[ext_resource type="PackedScene" uid="uid://cx6v88qcxfsli" path="res://assets/body/waist.tscn" id="5_bectd"]
 [ext_resource type="PackedScene" uid="uid://78se45loude4" path="res://gui/gui.tscn" id="5_fkugw"]
-[ext_resource type="PackedScene" uid="uid://d3j4gw27hbqpx" path="res://assets/body/leg.fbx" id="10_wvtmh"]
-[ext_resource type="PackedScene" uid="uid://dab77qiywfdfi" path="res://assets/body/leg.tscn" id="11_a1qjk"]
-[ext_resource type="Material" uid="uid://dbptf672i445x" path="res://assets/mats/vanta.tres" id="12_j3ovn"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_sfv1e"]
 radius = 1.0
@@ -19,10 +12,7 @@ height = 4.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_symyc"]
 radius = 1.0
-height = 4.364502
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_afbqv"]
-radial_segments = 8
+height = 4.0
 
 [node name="player" type="CharacterBody3D" groups=["p"]]
 collision_layer = 5
@@ -34,25 +24,9 @@ jump_speed = 10.0
 [node name="gui" parent="." instance=ExtResource("5_fkugw")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-visible = false
 mesh = SubResource("CapsuleMesh_sfv1e")
 
-[node name="body3" parent="." instance=ExtResource("3_qiwj3")]
-transform = Transform3D(-1.0927847e-06, 0, 25, 0, 25, 0, -25, 0, -1.0927847e-06, 2.8472834, -0.34982073, -1.7503085)
-
-[node name="waist" parent="." instance=ExtResource("4_26q78")]
-transform = Transform3D(-1.0927847e-06, 0, 25, 0, 25, 0, -25, 0, -1.0927847e-06, 2.883454, -0.46202815, -1.8133284)
-visible = false
-
-[node name="waist2" parent="." instance=ExtResource("5_bectd")]
-transform = Transform3D(-1.0927847e-06, 0, -25, 0, 25, 0, 25, 0, -1.0927847e-06, -2.8134427, -0.52422976, 1.7153492)
-
-[node name="body" parent="." instance=ExtResource("3_8fjmc")]
-transform = Transform3D(-1.0927847e-06, 0, 25, 0, 25, 0, -25, 0, -1.0927847e-06, 2.8306146, -0.35620165, -1.8548989)
-visible = false
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.182251, 0)
 shape = SubResource("CapsuleShape3D_symyc")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="."]
@@ -96,84 +70,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 
 [node name="jump_timer" type="Timer" parent="timers"]
 one_shot = true
-
-[node name="leg" parent="." instance=ExtResource("10_wvtmh")]
-transform = Transform3D(-1.0927847e-06, 0, -25, 0, 25, 0, 25, 0, -1.0927847e-06, 0.93890727, -1.8856403, 0.19044018)
-visible = false
-
-[node name="r_leg" type="Node3D" parent="."]
-
-[node name="r_thigh" type="Node3D" parent="r_leg"]
-transform = Transform3D(1, 0, 0, 0, 0.7738971, 0, 0, 0, 1, 0.5322521, -1, 0)
-
-[node name="leg2" parent="r_leg/r_thigh" instance=ExtResource("11_a1qjk")]
-transform = Transform3D(-1.0927847e-06, 0, 25, 0, 25, 0, -25, 0, -1.0927847e-06, -0.1415863, -0.9526839, -0.5056875)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="r_leg/r_thigh"]
-transform = Transform3D(-2.2166427e-08, -0.24123424, 0, 0.50710875, -1.0544684e-08, 0, 0, 0, 0.50710875, 0, -1.4677677, -0.053789735)
-mesh = SubResource("CylinderMesh_afbqv")
-surface_material_override/0 = ExtResource("12_j3ovn")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="r_leg/r_thigh"]
-transform = Transform3D(-2.2166427e-08, -0.24123424, 0, 0.50710875, -1.0544684e-08, 0, 0, 0, 0.50710875, 0, 0.039044857, -0.053789735)
-mesh = SubResource("CylinderMesh_afbqv")
-surface_material_override/0 = ExtResource("12_j3ovn")
-
-[node name="r_shin" type="Node3D" parent="r_leg/r_thigh"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5470898, 0)
-
-[node name="leg2" parent="r_leg/r_thigh/r_shin" instance=ExtResource("11_a1qjk")]
-transform = Transform3D(-9.187337e-07, 0, 21.018177, 0, 21.018177, 0, -21.018177, 0, -9.187337e-07, -0.1265524, -0.6960981, -0.45770413)
-
-[node name="leg3" parent="r_leg/r_thigh/r_shin" instance=ExtResource("11_a1qjk")]
-transform = Transform3D(-6.1005494e-07, 0, 13.9746685, -13.956432, -4.985346e-07, -6.1085217e-07, 6.1005494e-07, -11.405142, 2.6701196e-14, -0.05779451, -1.624907, -0.103441775)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="r_leg/r_thigh/r_shin"]
-transform = Transform3D(-1.8635916e-08, -0.20281217, 0, 0.42634007, -8.865202e-09, 0, 0, 0, 0.42634007, -0.00751698, -1.129143, -0.077781424)
-mesh = SubResource("CylinderMesh_afbqv")
-surface_material_override/0 = ExtResource("12_j3ovn")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="r_leg/r_thigh/r_shin"]
-transform = Transform3D(-1.8635916e-08, -0.20281217, 0, 0.42634007, -8.865202e-09, 0, 0, 0, 0.42634007, -0.00751698, -0.008556604, -0.077781424)
-mesh = SubResource("CylinderMesh_afbqv")
-surface_material_override/0 = ExtResource("12_j3ovn")
-
-[node name="l_leg" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0552825, 0, 0)
-
-[node name="l_thigh" type="Node3D" parent="l_leg"]
-transform = Transform3D(1, 0, 0, 0, 0.7738971, 0, 0, 0, 1, 0.5322521, -1, 0)
-
-[node name="leg2" parent="l_leg/l_thigh" instance=ExtResource("11_a1qjk")]
-transform = Transform3D(-1.0927847e-06, 0, 25, 0, 25, 0, -25, 0, -1.0927847e-06, -0.1415863, -0.9526839, -0.5056875)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="l_leg/l_thigh"]
-transform = Transform3D(-2.2166427e-08, -0.24123424, 0, 0.50710875, -1.0544684e-08, 0, 0, 0, 0.50710875, 0, -1.4677677, -0.053789735)
-mesh = SubResource("CylinderMesh_afbqv")
-surface_material_override/0 = ExtResource("12_j3ovn")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="l_leg/l_thigh"]
-transform = Transform3D(-2.2166427e-08, -0.24123424, 0, 0.50710875, -1.0544684e-08, 0, 0, 0, 0.50710875, 0, 0.039044857, -0.053789735)
-mesh = SubResource("CylinderMesh_afbqv")
-surface_material_override/0 = ExtResource("12_j3ovn")
-
-[node name="l_shin" type="Node3D" parent="l_leg/l_thigh"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5470898, 0)
-
-[node name="leg2" parent="l_leg/l_thigh/l_shin" instance=ExtResource("11_a1qjk")]
-transform = Transform3D(-9.187337e-07, 0, 21.018177, 0, 21.018177, 0, -21.018177, 0, -9.187337e-07, -0.1265524, -0.6960981, -0.45770413)
-
-[node name="leg3" parent="l_leg/l_thigh/l_shin" instance=ExtResource("11_a1qjk")]
-transform = Transform3D(-6.1005494e-07, 0, 13.9746685, -13.956432, -4.985346e-07, -6.1085217e-07, 6.1005494e-07, -11.405142, 2.6701196e-14, -0.05779451, -1.624907, -0.103441775)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="l_leg/l_thigh/l_shin"]
-transform = Transform3D(-1.8635916e-08, -0.20281217, 0, 0.42634007, -8.865202e-09, 0, 0, 0, 0.42634007, -0.00751698, -1.129143, -0.077781424)
-mesh = SubResource("CylinderMesh_afbqv")
-surface_material_override/0 = ExtResource("12_j3ovn")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="l_leg/l_thigh/l_shin"]
-transform = Transform3D(-1.8635916e-08, -0.20281217, 0, 0.42634007, -8.865202e-09, 0, 0, 0, 0.42634007, -0.00751698, -0.008556604, -0.077781424)
-mesh = SubResource("CylinderMesh_afbqv")
-surface_material_override/0 = ExtResource("12_j3ovn")
 
 [connection signal="timeout" from="timers/jump_timer" to="." method="_on_jump_timer_timeout"]

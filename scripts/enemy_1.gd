@@ -30,6 +30,12 @@ func _process(delta: float) -> void:
 		else:
 			arms.remove_at(arms.find(i))
 	
+	for i in arms:
+		if i != null:
+			if i.type == 1:
+				has_range = true
+		else:
+			arms.remove_at(arms.find(i))
 	
 	if targets.size():
 		target = targets.pick_random()
