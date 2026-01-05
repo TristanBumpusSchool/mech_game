@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx6v88qcxfsli"]
+
+[ext_resource type="PackedScene" uid="uid://odahs7gv7inx" path="res://assets/body/waist.fbx" id="1_4oags"]
+[ext_resource type="Material" uid="uid://nf787ru7bmyj" path="res://assets/mats/mat_metal_light.tres" id="2_elpy5"]
+
+[node name="waist" instance=ExtResource("1_4oags")]
+
+[node name="pCylinder28" parent="." index="2"]
+surface_material_override/0 = ExtResource("2_elpy5")

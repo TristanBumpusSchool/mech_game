@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dab77qiywfdfi"]
+
+[ext_resource type="PackedScene" uid="uid://d3j4gw27hbqpx" path="res://assets/body/leg.fbx" id="1_vtoft"]
+[ext_resource type="Material" uid="uid://0cjqky1h1biu" path="res://assets/mats/mat_metal_dark.tres" id="2_lwd7y"]
+
+[node name="leg" instance=ExtResource("1_vtoft")]
+
+[node name="pCube16" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_lwd7y")
