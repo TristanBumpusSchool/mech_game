@@ -8,7 +8,7 @@ extends CharacterBody3D
 @export var cam_sensativity = 30000
 @export var jumping = false
 @export var target = Vector3.ZERO
-
+@export var hp = 300
 
 func cam_rotation():
 	var temp = rotation.y

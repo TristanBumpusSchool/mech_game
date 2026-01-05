@@ -5,14 +5,15 @@ extends Node3D
 func _ready() -> void:
 	pass # Replace with function body.
 
+func damaged(d):
+	$AnimationPlayer.play("explosion")
+	$Timer.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
 
-func _on_area_3d_area_entered(area: Area3D) -> void:
-	if area.is_in_group("player_bullet"):
-		print("test")
-		$AnimationPlayer.play("explosion")
-		
+
+func _on_timer_timeout() -> void:
+	queue_free()

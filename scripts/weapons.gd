@@ -1,18 +1,33 @@
-extends CharacterBody3D
+extends RigidBody3D
 
-@export_enum("melee weapon", "ranged weapon") var type
+@export_enum("melee weapon", "ranged weapon","rag doll") var type
 @export var firering = false
 @export var fire = 0
 @export var bullet = ""
 @export var hp = 100
 @export var damage = 100
+@export var self_for_death = ""
 @onready var target = get_parent().get_parent().get_parent()
 
+
+
+func death_animation():
+	if type != 2:
+		var s = load(self_for_death).instantiate()
+		
+		s.global_position = global_position
+		s.rotation = rotation
+		s.sleeping = false
+		s.gravity_scale = 1
+		
+		get_tree().current_scene.add_child(s)
+	
+	queue_free()
 
 func damaged(d):
 	hp -= d
 	if hp <= 0:
-		queue_free()
+		death_animation()
 
 
 

@@ -14,11 +14,14 @@ size = Vector3(0.1, 4, 0.1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_b21oe"]
 size = Vector3(0.1, 4, 0.1)
 
-[node name="arm" type="CharacterBody3D" groups=["arm", "melee"]]
+[node name="arm" type="RigidBody3D" groups=["arm", "melee"]]
 collision_layer = 6
 collision_mask = 2
+gravity_scale = 0.0
+sleeping = true
 script = ExtResource("1_b21oe")
 type = 0
+self_for_death = "res://entities/player/arm_2.tscn"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_b21oe")

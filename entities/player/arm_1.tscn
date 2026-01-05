@@ -94,12 +94,15 @@ _data = {
 &"fire": SubResource("Animation_bpuo5")
 }
 
-[node name="arm" type="CharacterBody3D" groups=["arm", "ranged"]]
+[node name="arm" type="RigidBody3D" groups=["arm", "ranged"]]
 collision_layer = 6
 collision_mask = 2
+gravity_scale = 0.0
+sleeping = true
 script = ExtResource("1_fx4ld")
 type = 1
 bullet = "res://entities/bullet/bullet_1.tscn"
+self_for_death = "res://entities/player/arm_1.tscn"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_fx4ld")
