@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cpgpojibkngoh"]
+[gd_scene load_steps=11 format=3 uid="uid://cpgpojibkngoh"]
 
 [ext_resource type="Texture2D" uid="uid://dcnrtfb754xmh" path="res://assets/building/spike.png" id="1_nvhbe"]
 [ext_resource type="Script" uid="uid://cgcvky8oqspc0" path="res://entities/building/building_square_part.gd" id="1_tjn1f"]
@@ -10,7 +10,7 @@ albedo_texture = ExtResource("1_nvhbe")
 [sub_resource type="PlaneMesh" id="PlaneMesh_a3ilm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nvhbe"]
-size = Vector3(0.496521, 1.9719238, 0.53466797)
+size = Vector3(0.496521, 1.3736572, 0.53466797)
 
 [sub_resource type="Animation" id="Animation_sqtku"]
 length = 0.001
@@ -24,7 +24,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -233,6 +233,20 @@ tracks/8/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath(".")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.93333334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_14llp"]
 _data = {
@@ -240,11 +254,14 @@ _data = {
 &"exposion": SubResource("Animation_14llp")
 }
 
-[node name="building_spike_part" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_a3ilm"]
+size = Vector3(0.4947815, 1.4194641, 0.49243164)
+
+[node name="building_spike_part" type="StaticBody3D"]
 script = ExtResource("1_tjn1f")
 
 [node name="sprite" type="Node3D" parent="."]
-visible = false
+transform = Transform3D(1, 0, 0, 0, 0.6591933, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="sprite"]
 transform = Transform3D(0.25962746, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.020765752, 0.87202466, 0.23083049)
@@ -273,7 +290,7 @@ skeleton = NodePath("../..")
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.021697998, 0.8826904, 0.029052734)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.021697998, 0.5835571, 0.029052734)
 shape = SubResource("BoxShape3D_nvhbe")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -282,7 +299,6 @@ libraries = {
 }
 
 [node name="explosion" type="Node3D" parent="."]
-visible = false
 
 [node name="Sprite3D2" type="Sprite3D" parent="explosion"]
 billboard = 1
@@ -304,4 +320,6 @@ billboard = 1
 texture_filter = 0
 texture = ExtResource("3_a3ilm")
 
-[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.024398804, 0.62971497, 0)
+shape = SubResource("BoxShape3D_a3ilm")
