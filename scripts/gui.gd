@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
 	elif $joint_1 != null:
 		$joint_1.queue_free()
 	if $"../joint2" != null:
-		$joint_2.value = $"../joint".hp
+		$joint_2.value = $"../joint2".hp
 	elif $joint_2 != null:
 		$joint_2.queue_free()
 	$body.value = player.hp

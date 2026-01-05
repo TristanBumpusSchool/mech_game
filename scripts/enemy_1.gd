@@ -32,26 +32,21 @@ func _process(delta: float) -> void:
 		else:
 			arms.remove_at(arms.find(i))
 	
-<<<<<<< Updated upstream
 	for i in arms:
 		if i != null:
 			if i.type == 1:
 				has_range = true
 		else:
 			arms.remove_at(arms.find(i))
-=======
 	#Target check for null
 	for i in targets:
 		if i == null:
 			targets.remove_at(targets.find(i))
->>>>>>> Stashed changes
 	
 	if targets.size():
 		target = targets.pick_random().global_position
 	
 	if has_range:
-		
-		
 		if targets.size():
 			
 			for i in arms:
