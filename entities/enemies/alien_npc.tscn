@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://b16qc4k11842c" path="res://scripts/damage_npc.gd" id="2_ylcs2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o0dyl"]
-size = Vector3(0.24108887, 0.47702026, 0.24072266)
+size = Vector3(0.24108887, 0.47704315, 0.24072266)
 
 [sub_resource type="Animation" id="Animation_ckjme"]
 length = 0.001
@@ -240,7 +240,7 @@ collision_mask = 5
 script = ExtResource("2_ylcs2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0025024414, 0.27119446, -0.0026855469)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.0025024414, 0.47675323, -0.0026855469)
 shape = SubResource("BoxShape3D_o0dyl")
 
 [node name="alien2" parent="." instance=ExtResource("1_ug5tc")]

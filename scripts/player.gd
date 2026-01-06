@@ -135,10 +135,17 @@ func attack():
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	$joint/placement/arm.add_to_group("p")
-	$joint2/placement/arm.add_to_group("p")
-	$joint/placement/arm.shooter = "p"
-	$joint2/placement/arm.shooter = "p"
+	
+	var l = load(global.arms[global.left]).instantiate()
+	var r = load(global.arms[global.right]).instantiate()
+	
+	$joint2/placement.add_child(l)
+	$joint/placement.add_child(r)
+	
+	$joint/placement.get_child(0).add_to_group("p")
+	$joint2/placement.get_child(0).add_to_group("p")
+	$joint/placement.get_child(0).shooter = "p"
+	$joint2/placement.get_child(0).shooter = "p"
 
 
 

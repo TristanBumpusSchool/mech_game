@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://b16qc4k11842c" path="res://scripts/damage_npc.gd" id="2_l3374"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jc5j3"]
-size = Vector3(2.0986328, 0.8695679, 0.88708496)
+size = Vector3(4.1921387, 1.6060028, 1.8033752)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_14lf3"]
 resource_name = "openPBR_shader1"
@@ -242,7 +242,7 @@ collision_mask = 5
 script = ExtResource("2_l3374")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.092285156, 0.34243774, 0.08758545)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.017288214, 0.8098221, -0.020446777)
 shape = SubResource("BoxShape3D_jc5j3")
 
 [node name="explosionsprite" type="Node3D" parent="."]
@@ -252,7 +252,7 @@ transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 0, 0, -2.4753013)
 
 [node name="sprite" type="Node3D" parent="."]
-transform = Transform3D(-1.0927847e-06, 0, -25, 0, 25, 0, 25, 0, -1.0927847e-06, 0, 0.20028836, 0.47215003)
+transform = Transform3D(-2.1855694e-06, 0, -50, 0, 50, 0, 50, 0, -2.1855694e-06, 0, 0.20028836, 0.47215003)
 
 [node name="pCube1" type="MeshInstance3D" parent="sprite"]
 transform = Transform3D(8.408668, 0, 0, 0, 1.4613949, 0, 0, 0, 3.3687322, -0.003827352, 0.004125134, -0.015732178)
@@ -261,7 +261,7 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_jc5j3")
 
 [node name="pCylinder5" type="MeshInstance3D" parent="sprite"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0014757562, -0.0011862977, -0.018784592)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0014757556, -0.0011862968, -0.015790382)
 mesh = SubResource("ArrayMesh_qc51u")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_l3374")

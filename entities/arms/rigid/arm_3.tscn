@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://qt0w1d75j7h3"]
+[gd_scene load_steps=7 format=3 uid="uid://bnvwmqftqoa8d"]
 
-[ext_resource type="PackedScene" uid="uid://b0ef1iclo3nm" path="res://assets/arms/mg_frame.tscn" id="1_dfkyh"]
-[ext_resource type="Script" uid="uid://bq5iay0ilgha2" path="res://scripts/weapons.gd" id="1_hm6w8"]
-[ext_resource type="PackedScene" uid="uid://cv5c8o16p5aqp" path="res://assets/arms/a_acanon.tscn" id="2_hm6w8"]
+[ext_resource type="PackedScene" uid="uid://b0ef1iclo3nm" path="res://assets/arms/mg_frame.tscn" id="2_a758v"]
+[ext_resource type="PackedScene" uid="uid://cv5c8o16p5aqp" path="res://assets/arms/a_acanon.tscn" id="3_t5wpd"]
 
 [sub_resource type="Animation" id="Animation_3swat"]
 length = 0.001
@@ -93,20 +92,15 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_hm6w8"]
 size = Vector3(1.4279785, 1.2736816, 0.8552246)
 
-[node name="arm" type="CharacterBody3D" groups=["arm", "ranged"]]
-script = ExtResource("1_hm6w8")
-type = 1
-fire = 1
-bullet = "res://entities/bullet/bullet_1.tscn"
-self_for_death = "res://entities/arms/rigid/arm_3.tscn"
+[node name="arm" type="RigidBody3D" groups=["pickup"]]
 
-[node name="mgFrame3" parent="." instance=ExtResource("1_dfkyh")]
+[node name="mgFrame3" parent="." instance=ExtResource("2_a758v")]
 transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 9.702614, -0.05231273, -5.8309507)
 
-[node name="AAcanon2" parent="." instance=ExtResource("2_hm6w8")]
+[node name="AAcanon2" parent="." instance=ExtResource("3_t5wpd")]
 transform = Transform3D(23.38768, 0, 0, 0, 11.68976, 0, 0, 0, 11.68976, 1.2649032, -0.4480493, 0.04137796)
 
-[node name="AAcanon3" parent="." instance=ExtResource("2_hm6w8")]
+[node name="AAcanon3" parent="." instance=ExtResource("3_t5wpd")]
 transform = Transform3D(23.38768, 0, 0, 0, -11.689759, 1.0219512e-06, 0, -1.0219512e-06, -11.689759, 1.3289787, 0.38733268, 0.04137796)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

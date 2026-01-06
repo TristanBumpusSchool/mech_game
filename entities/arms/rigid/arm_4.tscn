@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dhdm7onrnrohw"]
+[gd_scene load_steps=6 format=3 uid="uid://byaaib26xfa5f"]
 
-[ext_resource type="Script" uid="uid://bq5iay0ilgha2" path="res://scripts/weapons.gd" id="1_gulbx"]
-[ext_resource type="PackedScene" uid="uid://ci7yft0avabs3" path="res://assets/arms/lasergun.tscn" id="1_pd253"]
+[ext_resource type="PackedScene" uid="uid://ci7yft0avabs3" path="res://assets/arms/lasergun.tscn" id="2_mdv1y"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gulbx"]
 size = Vector3(3.3755493, 0.8520508, 0.93566895)
@@ -43,14 +42,9 @@ _data = {
 &"fire": SubResource("Animation_gulbx")
 }
 
-[node name="arm" type="CharacterBody3D" groups=["arm", "ranged"]]
-script = ExtResource("1_gulbx")
-type = 1
-fire = 1
-bullet = "res://entities/bullet/laser_bullet.tscn"
-self_for_death = "res://entities/arms/rigid/arm_4.tscn"
+[node name="arm" type="RigidBody3D" groups=["pickup"]]
 
-[node name="lasergun2" parent="." instance=ExtResource("1_pd253")]
+[node name="lasergun2" parent="." instance=ExtResource("2_mdv1y")]
 transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, -1.1698561, -1.3416779, 1.0544884)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

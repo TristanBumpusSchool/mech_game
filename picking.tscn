@@ -1,0 +1,198 @@
+[gd_scene load_steps=10 format=3 uid="uid://duwq3evpxc40j"]
+
+[ext_resource type="Script" uid="uid://cp1cj32oq6k83" path="res://scripts/picking.gd" id="1_ftivu"]
+[ext_resource type="PackedScene" uid="uid://du1sakh444ask" path="res://assets/body/body.tscn" id="1_lterx"]
+[ext_resource type="PackedScene" uid="uid://cx6v88qcxfsli" path="res://assets/body/waist.tscn" id="2_ftivu"]
+[ext_resource type="PackedScene" uid="uid://ct6cswrdhb0w1" path="res://entities/player/joint.tscn" id="3_ppm8x"]
+[ext_resource type="PackedScene" uid="uid://qt0w1d75j7h3" path="res://entities/arms/arm_3.tscn" id="4_b1qc6"]
+[ext_resource type="PackedScene" uid="uid://dhdm7onrnrohw" path="res://entities/arms/arm_4.tscn" id="5_gx34v"]
+[ext_resource type="PackedScene" uid="uid://dab77qiywfdfi" path="res://assets/body/leg.tscn" id="6_xykij"]
+[ext_resource type="Material" uid="uid://dbptf672i445x" path="res://assets/mats/vanta.tres" id="7_bpl1m"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_6g758"]
+
+[node name="picking" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ftivu")
+
+[node name="3d_stuff" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="3d_stuff"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -6.2521973)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="3d_stuff/Camera3D"]
+light_energy = 2.0
+spot_range = 13.177
+spot_angle = 30.0
+
+[node name="body2" parent="3d_stuff" instance=ExtResource("1_lterx")]
+transform = Transform3D(-1.0927847e-06, 0, 25, 0, 25, 0, -25, 0, -1.0927847e-06, 2.8400545, -0.29846108, -1.7295634)
+
+[node name="waist2" parent="3d_stuff" instance=ExtResource("2_ftivu")]
+transform = Transform3D(-1.0927847e-06, 0, -25, 0, 25, 0, 25, 0, -1.0927847e-06, -2.8325949, -0.43518388, 1.8233447)
+
+[node name="joint" parent="3d_stuff" instance=ExtResource("3_ppm8x")]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, 0.9999999, 0, -0.9999999, -4.3711385e-08, 1.6, 1.25, 0)
+
+[node name="placement" type="Node3D" parent="3d_stuff/joint"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -1.25)
+
+[node name="arm" parent="3d_stuff/joint/placement" instance=ExtResource("4_b1qc6")]
+type = 3
+
+[node name="joint2" parent="3d_stuff" instance=ExtResource("3_ppm8x")]
+transform = Transform3D(0.99999994, 0, 0, 0, -4.3711385e-08, 0.9999999, 0, -0.9999999, -4.3711385e-08, -1.6, 1.25, 0)
+
+[node name="placement" type="Node3D" parent="3d_stuff/joint2"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -1.25)
+
+[node name="arm" parent="3d_stuff/joint2/placement" instance=ExtResource("5_gx34v")]
+type = 3
+
+[node name="legs" type="Node3D" parent="3d_stuff"]
+transform = Transform3D(-1.0927847e-06, 0, 25, 0, 25, 0, -25, 0, -1.0927847e-06, 0, 0, 0)
+
+[node name="r_thigh" type="Node3D" parent="3d_stuff/legs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3400603e-09, -0.040825248, 0.030657003)
+
+[node name="leg" parent="3d_stuff/legs/r_thigh" instance=ExtResource("6_xykij")]
+transform = Transform3D(1, 0, 0, 0, 0.7782932, 0, 0, 0, 1, 0.017546903, -0.027208716, -0.008870378)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="3d_stuff/legs/r_thigh"]
+transform = Transform3D(0.025326893, 6.5530864e-10, 1.1070725e-09, -1.1070733e-09, -6.553087e-10, 0.025326895, 1.1070747e-09, -0.014991714, -1.1070735e-09, -0.0011445973, 0.00032879785, -0.004871104)
+mesh = SubResource("CylinderMesh_6g758")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("7_bpl1m")
+
+[node name="r_shin" type="Node3D" parent="3d_stuff/legs/r_thigh"]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 1, -3.7252903e-09, -0.04089405, 1.8626451e-09)
+
+[node name="leg" parent="3d_stuff/legs/r_thigh/r_shin" instance=ExtResource("6_xykij")]
+transform = Transform3D(0.61653864, 0, -5.3290705e-15, 0, 0.47984782, 0, 5.3290705e-15, 0, 0.61653864, 0.01276859, -0.02199769, -0.007848)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="3d_stuff/legs/r_thigh/r_shin"]
+transform = Transform3D(0.015615008, 4.0402312e-10, 6.8255307e-10, -6.8255346e-10, -4.0402312e-10, 0.01561501, 6.8255435e-10, -0.0092429705, -6.8255346e-10, 0.0012445593, -0.005019754, -0.005382292)
+mesh = SubResource("CylinderMesh_6g758")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("7_bpl1m")
+
+[node name="leg2" parent="3d_stuff/legs/r_thigh/r_shin" instance=ExtResource("6_xykij")]
+transform = Transform3D(-0.013845878, 0.38277474, -2.2499306e-08, -0.377238, -0.014049089, -2.1688642e-08, -1.7105913e-08, 1.6731617e-08, 0.4965126, 0.014169128, -0.040370323, -0.007848)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="3d_stuff/legs/r_thigh/r_shin"]
+transform = Transform3D(0.015615008, 4.0402312e-10, 6.8255307e-10, -6.8255346e-10, -4.0402312e-10, 0.01561501, 6.8255446e-10, -0.0092429705, -6.8255346e-10, 0.0012445593, -0.031016856, -0.005382292)
+mesh = SubResource("CylinderMesh_6g758")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("7_bpl1m")
+
+[node name="l_thigh" type="Node3D" parent="3d_stuff/legs"]
+transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 1, 8.0452217e-10, -0.040825248, -0.018405326)
+
+[node name="leg" parent="3d_stuff/legs/l_thigh" instance=ExtResource("6_xykij")]
+transform = Transform3D(1, 0, 0, 0, 0.7782932, 0, 0, 0, 1, 0.017546903, -0.027208716, -0.008870378)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="3d_stuff/legs/l_thigh"]
+transform = Transform3D(0.025326893, 6.5530864e-10, 1.1070725e-09, -1.1070733e-09, -6.553087e-10, 0.025326895, 1.1070747e-09, -0.014991714, -1.1070735e-09, -0.0011445973, 0.00032879785, -0.004871104)
+mesh = SubResource("CylinderMesh_6g758")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("7_bpl1m")
+
+[node name="l_shin" type="Node3D" parent="3d_stuff/legs/l_thigh"]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1.0000001, -3.7252903e-09, -0.040894054, 1.8626451e-09)
+
+[node name="leg" parent="3d_stuff/legs/l_thigh/l_shin" instance=ExtResource("6_xykij")]
+transform = Transform3D(0.61653864, 0, -5.3290705e-15, 0, 0.47984782, 0, 5.3290705e-15, 0, 0.61653864, 0.01276859, -0.02199769, -0.007848)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="3d_stuff/legs/l_thigh/l_shin"]
+transform = Transform3D(0.015615008, 4.0402312e-10, 6.8255307e-10, -6.8255346e-10, -4.0402312e-10, 0.01561501, 6.8255435e-10, -0.0092429705, -6.8255346e-10, 0.0012445593, -0.005019754, -0.005382292)
+mesh = SubResource("CylinderMesh_6g758")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("7_bpl1m")
+
+[node name="leg2" parent="3d_stuff/legs/l_thigh/l_shin" instance=ExtResource("6_xykij")]
+transform = Transform3D(-0.013845878, 0.38277474, -2.2499306e-08, -0.377238, -0.014049089, -2.1688642e-08, -1.7105913e-08, 1.6731617e-08, 0.4965126, 0.014169128, -0.040370323, -0.007848)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="3d_stuff/legs/l_thigh/l_shin"]
+transform = Transform3D(0.015615008, 4.0402312e-10, 6.8255307e-10, -6.8255346e-10, -4.0402312e-10, 0.01561501, 6.8255446e-10, -0.0092429705, -6.8255346e-10, 0.0012445593, -0.031016856, -0.005382292)
+mesh = SubResource("CylinderMesh_6g758")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("7_bpl1m")
+
+[node name="left" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -35.0
+offset_bottom = 35.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "Change"
+flat = true
+
+[node name="right" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -35.0
+offset_right = 207.0
+offset_bottom = 35.0
+grow_vertical = 2
+text = "Change"
+flat = true
+
+[node name="start" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -103.5
+offset_top = -78.0
+offset_right = 103.5
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Start"
+flat = true
+
+[node name="left_label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -70.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 16
+
+[node name="right_label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -70.0
+offset_right = 48.0
+offset_bottom = -8.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 16
+
+[connection signal="pressed" from="left" to="." method="_on_left_pressed"]
+[connection signal="pressed" from="right" to="." method="_on_right_pressed"]
+[connection signal="pressed" from="start" to="." method="_on_start_pressed"]

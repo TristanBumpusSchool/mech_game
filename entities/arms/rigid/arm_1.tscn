@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://brpbx3w0fsowt"]
+[gd_scene load_steps=9 format=3 uid="uid://1kou041e22nu"]
 
-[ext_resource type="Script" uid="uid://bq5iay0ilgha2" path="res://scripts/weapons.gd" id="1_fx4ld"]
-[ext_resource type="PackedScene" uid="uid://dvmx33o7cstu0" path="res://assets/arms/AAbolt.fbx" id="2_xn76u"]
-[ext_resource type="PackedScene" uid="uid://yo7arhytthvn" path="res://assets/arms/a_aframe.tscn" id="3_0ydaa"]
-[ext_resource type="PackedScene" uid="uid://cv5c8o16p5aqp" path="res://assets/arms/a_acanon.tscn" id="5_xn76u"]
-[ext_resource type="PackedScene" uid="uid://byew71hn3g7f6" path="res://assets/arms/a_abolt.tscn" id="7_bpuo5"]
+[ext_resource type="PackedScene" uid="uid://dvmx33o7cstu0" path="res://assets/arms/AAbolt.fbx" id="2_03f58"]
+[ext_resource type="PackedScene" uid="uid://yo7arhytthvn" path="res://assets/arms/a_aframe.tscn" id="3_rw1x6"]
+[ext_resource type="PackedScene" uid="uid://cv5c8o16p5aqp" path="res://assets/arms/a_acanon.tscn" id="4_celoq"]
+[ext_resource type="PackedScene" uid="uid://byew71hn3g7f6" path="res://assets/arms/a_abolt.tscn" id="5_3h8ar"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fx4ld"]
 size = Vector3(2, 1, 1)
@@ -94,13 +93,9 @@ _data = {
 &"fire": SubResource("Animation_bpuo5")
 }
 
-[node name="arm" type="CharacterBody3D" groups=["arm", "ranged"]]
+[node name="arm" type="RigidBody3D" groups=["pickup"]]
 collision_layer = 6
 collision_mask = 2
-script = ExtResource("1_fx4ld")
-type = 1
-bullet = "res://entities/bullet/explosive_bullet.tscn"
-self_for_death = "res://entities/arms/rigid/arm_1.tscn"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_fx4ld")
@@ -110,12 +105,12 @@ libraries = {
 &"": SubResource("AnimationLibrary_bkq4o")
 }
 
-[node name="AAbolt" parent="." instance=ExtResource("2_xn76u")]
+[node name="AAbolt" parent="." instance=ExtResource("2_03f58")]
 
-[node name="AAframe2" parent="." instance=ExtResource("3_0ydaa")]
+[node name="AAframe2" parent="." instance=ExtResource("3_rw1x6")]
 transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 1.361, -1.315, 0)
 
-[node name="AAcanon2" parent="." instance=ExtResource("5_xn76u")]
+[node name="AAcanon2" parent="." instance=ExtResource("4_celoq")]
 transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 1.7, -1.3, 0)
 
 [node name="bullet_source" type="Node3D" parent="."]
@@ -124,5 +119,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8740034, -0.04624474, 0)
 [node name="bullet_target" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.284185, -0.04624474, 0)
 
-[node name="AAbolt2" parent="." instance=ExtResource("7_bpuo5")]
+[node name="AAbolt2" parent="." instance=ExtResource("5_3h8ar")]
 transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 1.3379395, -1.2708352, 0.002523899)

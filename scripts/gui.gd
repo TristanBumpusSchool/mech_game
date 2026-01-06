@@ -1,20 +1,23 @@
 extends Control
 
 @export var player = CharacterBody3D
-
+var start = true
 
 
 func _ready() -> void:
-	$hp_bar/arm_1.max_value = $"../joint/placement/arm".hp
-	$hp_bar/arm_2.max_value = $"../joint2/placement/arm".hp
-	#$hp_bar/leg_1.max_value
-	#$hp_bar/leg_2.max_value
-	$hp_bar/joint_1.max_value = $"../joint".hp
-	$hp_bar/joint_2.max_value = $"../joint2".hp
-	$hp_bar/body.max_value = player.hp
+	pass
 
 
 func _process(delta: float) -> void:
+	if start:
+		$hp_bar/arm_1.max_value = $"../joint/placement".get_child(0).hp
+		$hp_bar/arm_2.max_value = $"../joint2/placement".get_child(0).hp
+		#$hp_bar/leg_1.max_value
+		#$hp_bar/leg_2.max_value
+		$hp_bar/joint_1.max_value = $"../joint".hp
+		$hp_bar/joint_2.max_value = $"../joint2".hp
+		$hp_bar/body.max_value = player.hp
+		start = false
 	
 	#for i in $hp_bar.get_children():
 		#if i.value < i.max_value * .5:

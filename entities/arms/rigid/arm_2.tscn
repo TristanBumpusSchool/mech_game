@@ -1,34 +1,28 @@
-[gd_scene load_steps=7 format=3 uid="uid://j67o6socn4pl"]
+[gd_scene load_steps=6 format=3 uid="uid://72oclpnlt8x5"]
 
-[ext_resource type="Script" uid="uid://bq5iay0ilgha2" path="res://scripts/weapons.gd" id="1_b21oe"]
-[ext_resource type="PackedScene" path="res://assets/arms/sword.tscn" id="2_2ejlw"]
+[ext_resource type="PackedScene" path="res://assets/arms/sword.tscn" id="2_bwvcw"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_b21oe"]
 size = Vector3(2, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2ejlw"]
-size = Vector3(1.4388428, 1, 1)
+size = Vector3(2, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_2ejlw"]
 size = Vector3(0.1, 4, 0.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b21oe"]
-size = Vector3(0.35175782, 2.7402344, 0.8960449)
+size = Vector3(0.1, 4, 0.1)
 
-[node name="arm" type="CharacterBody3D" groups=["arm", "melee"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4684155, 0, 0)
+[node name="arm" type="RigidBody3D" groups=["pickup"]]
 collision_layer = 6
 collision_mask = 2
-script = ExtResource("1_b21oe")
-type = 0
-self_for_death = "res://entities/arms/rigid/arm_2.tscn"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 visible = false
 mesh = SubResource("BoxMesh_b21oe")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1197988, 0, -0.07075834)
 shape = SubResource("BoxShape3D_2ejlw")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
@@ -41,10 +35,10 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4813887, 2.0698829, -0.06370269)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.222027, 1.44, 0)
 shape = SubResource("BoxShape3D_b21oe")
 
-[node name="sword" parent="." instance=ExtResource("2_2ejlw")]
-transform = Transform3D(-2.1855694e-06, 0, -50, 0, 50, 0, 50, 0, -2.1855694e-06, 5.599683, 0, -0.009835362)
+[node name="sword" parent="." instance=ExtResource("2_bwvcw")]
+transform = Transform3D(-2.1855694e-06, 0, -50, 0, 50, 0, 50, 0, -2.1855694e-06, 5.2144423, 0, 0.06092298)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

@@ -13,10 +13,10 @@ roughness = 0.0
 material = SubResource("StandardMaterial3D_0i640")
 top_radius = 0.1
 bottom_radius = 0.1
-height = 0.2
+height = 1.5
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0i640"]
-height = 0.2
+height = 1.5
 radius = 0.1
 
 [node name="laser_bullet" type="CharacterBody3D"]
