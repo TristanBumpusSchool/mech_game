@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhcys4aa7m2ro"]
+
+[ext_resource type="PackedScene" uid="uid://ec2n5ukllaee" path="res://assets/arms/sword.fbx" id="1_6cv6c"]
+[ext_resource type="Material" uid="uid://0cjqky1h1biu" path="res://assets/mats/mat_metal_dark.tres" id="2_og18j"]
+[ext_resource type="Material" uid="uid://nf787ru7bmyj" path="res://assets/mats/mat_metal_light.tres" id="3_c5676"]
+
+[node name="sword" instance=ExtResource("1_6cv6c")]
+
+[node name="pCylinder9" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_og18j")
+
+[node name="pCylinder11" parent="." index="1"]
+surface_material_override/0 = ExtResource("3_c5676")

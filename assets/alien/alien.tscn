@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckfxlutvhehxp"]
+
+[ext_resource type="PackedScene" uid="uid://gi4rn1bb0ahu" path="res://assets/alien/alien.fbx" id="1_3eo4q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w0488"]
+albedo_color = Color(0.3291907, 0.43252277, 0.61363167, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hbxlt"]
+albedo_color = Color(0, 0.6387667, 0.22007939, 1)
+
+[node name="alien" instance=ExtResource("1_3eo4q")]
+
+[node name="pCylinder8" parent="group2" index="0"]
+transform = Transform3D(0.4722544, 0, 0, 0, 0.58095086, 0, 0, 0, 0.4722544, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_w0488")
+
+[node name="pPlatonic1" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.011588369, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_hbxlt")

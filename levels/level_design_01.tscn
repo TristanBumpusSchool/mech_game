@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://be563xu1w8bwb"]
+[gd_scene load_steps=22 format=3 uid="uid://be563xu1w8bwb"]
 
 [ext_resource type="Texture2D" uid="uid://crc5l4a5li1bt" path="res://assets/building/ground.png" id="1_nps32"]
 [ext_resource type="PackedScene" uid="uid://ctustbevhsoj7" path="res://entities/building/building.tscn" id="2_4nkmd"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ct5jms772pair" path="res://entities/enemies/enemy_1.tscn" id="4_0ypu1"]
 [ext_resource type="Texture2D" uid="uid://drpiylp8ustrl" path="res://assets/building/light.png" id="5_4nkmd"]
 [ext_resource type="Script" uid="uid://cg575tm20i61m" path="res://assets/building/vegasdome.gd" id="6_p0ri0"]
+[ext_resource type="PackedScene" uid="uid://bnrdnuhhjshwk" path="res://entities/building/building_02.tscn" id="7_0ypu1"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_8plr8"]
 vertices = PackedVector3Array(-33.25, 2.5, -43.25, -31.75, 2.5, -43, -32, 2.5, -498, -34.5, 2.5, -42.5, -35, 2.5, -41.5, -498, 2.5, -498, -498, 2.5, -39.5, -35, 2.5, -39.5, -28, 2.5, -43, -27.75, 2.5, -498, -24.75, 2.5, -34.5, -25.25, 2.5, -33.75, 8.25, 2.5, -21.5, 9, 2.5, -22, -24.75, 2.5, -41.5, 17.25, 2.5, -21.25, 17.75, 2.5, -18.75, 498, 2.5, -19, 498, 2.5, -498, -25.5, 2.5, -42.75, 16, 2.5, -22, -26.5, 2.5, -43.25, -498, 2.5, -36.5, -35, 2.5, -36.5, -27.75, 2.5, -11.25, -27.75, 2.5, -32.75, -33.25, 2.5, -32.75, -30, 2.5, -10.5, -30.5, 2.5, -9.5, -34.25, 2.5, -33.25, -35, 2.5, -34.5, -498, 2.5, -7.5, -30.5, 2.5, -7.5, -26.5, 2.5, -32.75, -21.75, 2.5, -11.25, -21, 2.5, -10.75, 7.5, 2.5, -13.25, 7.25, 2.5, -20.25, 17.75, 2.5, -15, 498, 2.5, -14.75, 11.5, 2.5, -11.75, 11.5, 2.5, 19.25, 13.75, 2.5, 19.25, 16, 2.5, -11.75, 17.75, 2.5, -13.5, 17, 2.5, -12.25, 15.5, 2.5, 21, 15.5, 2.5, 23, 498, 2.5, 23, 14.75, 2.5, 19.75, -20.25, 2.5, -9.75, 8.25, 2.5, -12.25, -20, 2.5, -2.75, -21, 2.5, -1.5, -15.75, 2.5, 4, 9, 2.5, -11.75, 6.25, 2.5, 19.75, 7, 2.5, 19.25, -498, 2.5, -4.75, -30.5, 2.5, -4.75, -21.75, 2.5, -1, -28.75, 2.5, -1, 5.75, 2.5, 28.75, 5.25, 2.5, 27.75, 5.25, 2.5, 21, 5.75, 2.5, 20.25, 9, 2.5, 498, 9, 2.5, 29.5, 7, 2.5, 29.5, -30, 2.5, -1.75, -498, 2.5, 498, -30.5, 2.5, -2.75, 15.5, 2.5, 25.75, 498, 2.5, 25.75, 13.75, 2.5, 29.5, 11.75, 2.5, 29.5, 11.75, 2.5, 498, 14.75, 2.5, 29, 15.5, 2.5, 27.75, 498, 2.5, 498)
@@ -23,6 +24,18 @@ size = Vector2(400, 400)
 albedo_color = Color(0.59717613, 0.59717613, 0.5971761, 1)
 albedo_texture = ExtResource("1_nps32")
 uv1_scale = Vector3(200, 200, 200)
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_p0ri0"]
+size = Vector2(25, 400)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0ypu1"]
+load_path = "res://.godot/imported/ground.png-ae6cae918b7517834bdc5f7803d8b73f.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8plr8"]
+albedo_color = Color(0.32172796, 0.32172796, 0.32172796, 1)
+albedo_texture = SubResource("CompressedTexture2D_0ypu1")
+uv1_scale = Vector3(12.5, 200, 200)
 texture_filter = 0
 
 [sub_resource type="Gradient" id="Gradient_vn7o3"]
@@ -76,9 +89,28 @@ collision_mask = 3
 shape = SubResource("BoxShape3D_oymoh")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="NavigationRegion3D/envirenment/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5869303, 0)
 mesh = SubResource("PlaneMesh_etxlk")
 skeleton = NodePath("../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_kimlw")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="NavigationRegion3D/envirenment/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.8964195, 0.589, 0)
+mesh = SubResource("PlaneMesh_p0ri0")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_8plr8")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="NavigationRegion3D/envirenment/CollisionShape3D"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -220.48558, 0.589, -23)
+mesh = SubResource("PlaneMesh_p0ri0")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_8plr8")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="NavigationRegion3D/envirenment/CollisionShape3D"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 203.96594, 0.5890076, 2.194027)
+mesh = SubResource("PlaneMesh_p0ri0")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_8plr8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/envirenment/CollisionShape3D"]
 visible = false
@@ -112,5 +144,65 @@ mesh = SubResource("SphereMesh_0ypu1")
 script = ExtResource("6_p0ri0")
 
 [node name="Timer" type="Timer" parent="vegasdome"]
+
+[node name="building02" parent="." instance=ExtResource("7_0ypu1")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 13.681206, 0.5, -33.906857)
+
+[node name="building03" parent="." instance=ExtResource("7_0ypu1")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 30.728949, 0.5, 27.449226)
+
+[node name="building04" parent="." instance=ExtResource("7_0ypu1")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -70.18996, 0.5000038, 25.65355)
+
+[node name="building05" parent="." instance=ExtResource("7_0ypu1")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -50.00374, 0.5, 0.38990784)
+
+[node name="building" parent="." instance=ExtResource("2_4nkmd")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -38.009495, 0.54611003, -55.683243)
+
+[node name="building06" parent="." instance=ExtResource("7_0ypu1")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 16.90581, 0.5, -51.362526)
+
+[node name="building07" parent="." instance=ExtResource("7_0ypu1")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -30.387726, 0.5, 21.135128)
+
+[node name="building08" parent="." instance=ExtResource("7_0ypu1")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -31.659332, 0.5, 49.059002)
+
+[node name="building09" parent="." instance=ExtResource("7_0ypu1")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -78.63732, 0.5, -57.346596)
+
+[node name="building10" parent="." instance=ExtResource("7_0ypu1")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 20.865578, 0.5, 59.20413)
+
+[node name="building2" parent="." instance=ExtResource("2_4nkmd")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 53.662632, 0.5461081, 53.895294)
+
+[node name="building11" parent="." instance=ExtResource("7_0ypu1")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 53.095753, 0.4999962, 91.18144)
+
+[node name="building12" parent="." instance=ExtResource("7_0ypu1")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 60.51347, 0.5, -29.107048)
+
+[node name="building3" parent="." instance=ExtResource("2_4nkmd")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 42.127632, 0.5461081, -40.985367)
+
+[node name="building13" parent="." instance=ExtResource("7_0ypu1")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 45.255333, 0.5, -70.05978)
+
+[node name="building4" parent="." instance=ExtResource("2_4nkmd")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 63.523342, 0.5461081, -57.16187)
+
+[node name="building5" parent="." instance=ExtResource("2_4nkmd")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -41.86564, 0.5461081, -86.9654)
+
+[node name="building14" parent="." instance=ExtResource("7_0ypu1")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -48.856365, 0.5, -73.154366)
+
+[node name="building15" parent="." instance=ExtResource("7_0ypu1")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -61.28944, 0.5, -103.454865)
+
+[node name="building6" parent="." instance=ExtResource("2_4nkmd")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -45.854675, 0.5461081, 33.36532)
 
 [connection signal="timeout" from="vegasdome/Timer" to="vegasdome" method="_on_timer_timeout"]

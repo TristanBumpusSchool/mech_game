@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnrie8hpf0wyf"]
+
+[ext_resource type="PackedScene" uid="uid://bhcys4aa7m2ro" path="res://assets/arms/sword.tscn" id="1_l68mb"]
+
+[node name="arm_5" type="RigidBody3D"]
+
+[node name="sword2" parent="." instance=ExtResource("1_l68mb")]
+transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 0, 0, -2.6067843)

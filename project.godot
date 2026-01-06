@@ -23,6 +23,16 @@ global="*res://scripts/global.gd"
 
 window/stretch/mode="canvas_items"
 
+[file_customization]
+
+folder_colors={
+"res://assets/": "red",
+"res://entities/": "green",
+"res://gui/": "yellow",
+"res://levels/": "teal",
+"res://scripts/": "blue"
+}
+
 [global_group]
 
 target=""
