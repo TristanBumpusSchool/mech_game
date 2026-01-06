@@ -1,35 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://dodjomd0q7r2m"]
+[gd_scene load_steps=10 format=3 uid="uid://41osm4b1ein"]
 
+[ext_resource type="Script" uid="uid://djt80qm1fprri" path="res://scripts/npc.gd" id="1_ckjme"]
 [ext_resource type="PackedScene" uid="uid://ckfxlutvhehxp" path="res://assets/alien/alien.tscn" id="1_ug5tc"]
 [ext_resource type="Texture2D" uid="uid://cwp4ow0lglyvk" path="res://assets/alien/aliengiblets.png" id="2_o0dyl"]
+[ext_resource type="Script" uid="uid://b16qc4k11842c" path="res://scripts/damage_npc.gd" id="2_ylcs2"]
 
-[sub_resource type="Animation" id="Animation_o0dyl"]
-resource_name = "walk"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("alien2:rotation")
-tracks/0/interp = 2
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0.5654169, 0, 0), Vector3(0, 0, 0), Vector3(-0.56548667, 0, 0), Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("alien2:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.26666668, 0.49164498, 0.75637686, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0.17659333, 0), Vector3(0, 0.28966996, 0), Vector3(0, 0.17659333, 0), Vector3(0, 0.28966996, 0), Vector3(0, 0.17659333, 0)]
-}
+[sub_resource type="BoxShape3D" id="BoxShape3D_o0dyl"]
+size = Vector3(0.24108887, 0.47702026, 0.24072266)
 
 [sub_resource type="Animation" id="Animation_ckjme"]
 length = 0.001
@@ -117,6 +94,18 @@ tracks/6/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:dead")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_ylcs2"]
 resource_name = "death"
@@ -187,12 +176,52 @@ tracks/5/path = NodePath(".")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.8333333),
+"times": PackedFloat32Array(1),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"queue_free"
 }]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:dead")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_o0dyl"]
+resource_name = "walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("alien2:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -1.5707964, 0), Vector3(0.56548667, -1.5707964, 0), Vector3(0, -1.5707964, 0), Vector3(-0.56548667, -1.5707964, 0), Vector3(0, -1.5707964, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("alien2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.49164498, 0.75637686, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.17659333, 0), Vector3(0, 0.28966996, 0), Vector3(0, 0.17659333, 0), Vector3(0, 0.28966996, 0), Vector3(0, 0.17659333, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ylcs2"]
@@ -202,7 +231,17 @@ _data = {
 &"walk": SubResource("Animation_o0dyl")
 }
 
-[node name="alien_npc" type="Node3D"]
+[node name="alien_npc" type="PathFollow3D"]
+script = ExtResource("1_ckjme")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("2_ylcs2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0025024414, 0.27119446, -0.0026855469)
+shape = SubResource("BoxShape3D_o0dyl")
 
 [node name="alien2" parent="." instance=ExtResource("1_ug5tc")]
 transform = Transform3D(25, 0, 0, 0, 24.999998, 0, 0, 0, 24.999998, 0, 0.17659333, 0)
@@ -214,6 +253,7 @@ libraries = {
 autoplay = "walk"
 
 [node name="gore" type="Node3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
 visible = false
 
 [node name="Sprite3D" type="Sprite3D" parent="gore"]

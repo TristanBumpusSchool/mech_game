@@ -53,7 +53,7 @@ _data = {
 &"attack": SubResource("Animation_1n511")
 }
 
-[node name="enemy_1" type="CharacterBody3D"]
+[node name="enemy_1" type="CharacterBody3D" groups=["e"]]
 collision_layer = 5
 collision_mask = 0
 script = ExtResource("1_i3l3x")
@@ -80,6 +80,7 @@ transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -1.07, 1.15
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -1.25)
 
 [node name="arm" parent="joint2/placement" instance=ExtResource("4_c0rnx")]
+fire = 0
 hp = 50
 
 [node name="front" type="Node3D" parent="."]

@@ -75,7 +75,7 @@ func movement():
 	if !is_on_floor() and !jumping:
 		velocity.y += -10
 
-func animation():
+func attack():
 	if $joint2/placement/arm != null:
 		#region Left arm range type
 		if $joint2/placement/arm.type == 1:
@@ -88,6 +88,8 @@ func animation():
 					$joint2.look_at($SpringArm3D/Camera3D/RayCast3D.get_collision_point())
 				else:
 					$joint2.rotation_degrees = Vector3(0,0,0)
+			else:
+				$joint2/placement/arm.firering = false
 			if Input.is_action_just_released("click"):
 				$joint2/placement/arm.firering = false
 				var left_arm = create_tween()
@@ -106,13 +108,15 @@ func animation():
 		if $joint/placement/arm.type == 1:
 			if Input.is_action_just_pressed("r_click"):
 				var right_arm = create_tween()
-				right_arm.tween_property($joint/placement/arm,"firering",true, .2)
 				right_arm.tween_property($joint,"rotation_degrees",Vector3(0,0,0), .2)
+				right_arm.tween_property($joint/placement/arm,"firering",true, .2)
 			if Input.is_action_pressed("r_click"):
 				if $SpringArm3D/Camera3D/RayCast3D.is_colliding():
 					$joint.look_at($SpringArm3D/Camera3D/RayCast3D.get_collision_point())
 				else:
-					$joint2.rotation_degrees = Vector3(0,0,0)
+					$joint.rotation_degrees = Vector3(0,0,0)
+			else:
+				$joint/placement/arm.firering = false
 			if Input.is_action_just_released("r_click"):
 				$joint/placement/arm.firering = false
 				var right_arm = create_tween()
@@ -133,6 +137,8 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	$joint/placement/arm.add_to_group("p")
 	$joint2/placement/arm.add_to_group("p")
+	$joint/placement/arm.shooter = "p"
+	$joint2/placement/arm.shooter = "p"
 
 
 
@@ -148,7 +154,7 @@ func _process(delta: float) -> void:
 	
 	cam_rotation()
 	movement()
-	animation()
+	attack()
 	
 	move_and_slide()
 

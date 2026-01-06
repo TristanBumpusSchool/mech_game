@@ -12,7 +12,9 @@ albedo_color = Color(0.14, 0.14, 0.14, 1)
 [node name="car" instance=ExtResource("1_wmbfn")]
 
 [node name="pCube1" parent="." index="0"]
+transform = Transform3D(8.408669, 0, 0, 0, 1.4613949, 0, 0, 0, 3.3687322, 0.0016994104, 0.016182601, -0.015732178)
 surface_material_override/0 = SubResource("StandardMaterial3D_n15eq")
 
 [node name="pCylinder5" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.001488354, 0.006562775, -0.015245559)
 surface_material_override/0 = SubResource("StandardMaterial3D_4np5k")

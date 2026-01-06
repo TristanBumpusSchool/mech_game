@@ -299,6 +299,7 @@ libraries = {
 }
 
 [node name="explosion" type="Node3D" parent="."]
+visible = false
 
 [node name="Sprite3D2" type="Sprite3D" parent="explosion"]
 billboard = 1
@@ -323,3 +324,8 @@ texture = ExtResource("3_a3ilm")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.024398804, 0.62971497, 0)
 shape = SubResource("BoxShape3D_a3ilm")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

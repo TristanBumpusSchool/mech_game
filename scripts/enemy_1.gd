@@ -17,6 +17,12 @@ func damaged(d):
 
 
 
+func _ready() -> void:
+	$joint/placement/arm.add_to_group("e")
+	$joint2/placement/arm.add_to_group("e")
+	$joint/placement/arm.shooter = "e"
+	$joint2/placement/arm.shooter = "e"
+
 func _process(delta: float) -> void:
 	#if $joint/placement/arm.type == 1:
 	$NavigationAgent3D.target_position = player.global_position

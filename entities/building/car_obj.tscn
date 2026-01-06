@@ -1,6 +1,11 @@
-[gd_scene load_steps=12 format=4 uid="uid://dsyqasbqirad3"]
+[gd_scene load_steps=15 format=4 uid="uid://bnbey2ppb6mfw"]
 
 [ext_resource type="PackedScene" uid="uid://smi7jmkcyjwm" path="res://assets/arms/explosion.tscn" id="1_jc5j3"]
+[ext_resource type="Script" uid="uid://djt80qm1fprri" path="res://scripts/npc.gd" id="1_qc51u"]
+[ext_resource type="Script" uid="uid://b16qc4k11842c" path="res://scripts/damage_npc.gd" id="2_l3374"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jc5j3"]
+size = Vector3(2.0986328, 0.8695679, 0.88708496)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_14lf3"]
 resource_name = "openPBR_shader1"
@@ -79,8 +84,71 @@ shadow_mesh = SubResource("ArrayMesh_lyaje")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l3374"]
 albedo_color = Color(0.14, 0.14, 0.14, 1)
 
+[sub_resource type="Animation" id="Animation_jc5j3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite/pCube1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.003827352, 0.004125134, -0.015732178)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite/pCube1:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("explosionsprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.20028836, 0.47215003)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:dead")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_jmkc7"]
-resource_name = "explosion"
+resource_name = "death"
 length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -144,65 +212,38 @@ tracks/4/keys = {
 "method": &"queue_free"
 }]
 }
-
-[sub_resource type="Animation" id="Animation_jc5j3"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("sprite/pCube1:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:dead")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.003827352, 0.004125134, -0.015732178)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("sprite/pCube1:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("explosionsprite:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("sprite:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0.20028836, 0.47215003)]
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jc5j3"]
 _data = {
 &"RESET": SubResource("Animation_jc5j3"),
-&"explosion": SubResource("Animation_jmkc7")
+&"death": SubResource("Animation_jmkc7")
 }
 
-[node name="car_obj" type="Node3D"]
+[node name="car_obj" type="PathFollow3D"]
+rotation_mode = 4
+use_model_front = true
+script = ExtResource("1_qc51u")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("2_l3374")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.092285156, 0.34243774, 0.08758545)
+shape = SubResource("BoxShape3D_jc5j3")
 
 [node name="explosionsprite" type="Node3D" parent="."]
 transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
@@ -211,16 +252,16 @@ transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 0, 0, -2.4753013)
 
 [node name="sprite" type="Node3D" parent="."]
-transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 0, 0.20028836, 0.47215003)
+transform = Transform3D(-1.0927847e-06, 0, -25, 0, 25, 0, 25, 0, -1.0927847e-06, 0, 0.20028836, 0.47215003)
 
 [node name="pCube1" type="MeshInstance3D" parent="sprite"]
-transform = Transform3D(8.4086685, 0, 0, 0, 1.4613949, 0, 0, 0, 3.3687322, -0.003827352, 0.004125134, -0.015732178)
+transform = Transform3D(8.408668, 0, 0, 0, 1.4613949, 0, 0, 0, 3.3687322, -0.003827352, 0.004125134, -0.015732178)
 mesh = SubResource("ArrayMesh_jmkc7")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_jc5j3")
 
 [node name="pCylinder5" type="MeshInstance3D" parent="sprite"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0070151165, -0.0054946933, -0.015245559)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0014757562, -0.0011862977, -0.018784592)
 mesh = SubResource("ArrayMesh_qc51u")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_l3374")
@@ -229,15 +270,3 @@ surface_material_override/0 = SubResource("StandardMaterial3D_l3374")
 libraries = {
 &"": SubResource("AnimationLibrary_jc5j3")
 }
-
-[node name="pCube1" type="MeshInstance3D" parent="."]
-transform = Transform3D(8.408669, 0, 0, 0, 1.4613949, 0, 0, 0, 3.3687322, -0.02281741, 0.004125134, -0.015732178)
-mesh = SubResource("ArrayMesh_jmkc7")
-skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_jc5j3")
-
-[node name="pCylinder5" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.026005175, -0.0054946933, -0.015245559)
-mesh = SubResource("ArrayMesh_qc51u")
-skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_l3374")

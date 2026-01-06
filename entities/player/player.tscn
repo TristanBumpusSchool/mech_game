@@ -20,8 +20,8 @@ height = 4.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_j3ovn"]
 
-[sub_resource type="Animation" id="Animation_bectd"]
-resource_name = "idle"
+[sub_resource type="Animation" id="Animation_wvtmh"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -71,8 +71,8 @@ tracks/3/keys = {
 "values": [Vector3(0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_wvtmh"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_bectd"]
+resource_name = "idle"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -229,7 +229,7 @@ target_position = Vector3(0, 0, -100)
 collision_mask = 7
 
 [node name="joint" parent="." instance=ExtResource("2_sglur")]
-transform = Transform3D(-4.371139e-08, 0, -0.99999994, 0, 0.99999994, 0, 1, 0, -4.3711385e-08, 1.6, 1.25, 0)
+transform = Transform3D(1, 0, 0, 0, 0.7071067, 0.7071067, 0, -0.7071067, 0.7071067, 1.6, 1.25, 0)
 
 [node name="placement" type="Node3D" parent="joint"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -1.25)

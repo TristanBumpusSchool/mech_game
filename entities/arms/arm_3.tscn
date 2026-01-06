@@ -103,7 +103,7 @@ bullet = "res://entities/bullet/bullet_1.tscn"
 self_for_death = "res://entities/arms/arm_3.tscn"
 
 [node name="mgFrame3" parent="." instance=ExtResource("1_dfkyh")]
-transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 9.973012, -0.05231273, -5.8309507)
+transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 9.788992, -0.05231273, -5.8309507)
 
 [node name="AAcanon2" parent="." instance=ExtResource("2_hm6w8")]
 transform = Transform3D(23.38768, 0, 0, 0, 11.68976, 0, 0, 0, 11.68976, 1.2649032, -0.4480493, 0.04137796)
