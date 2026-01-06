@@ -145,8 +145,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	
 	#debug exit im tired of escape and moving my mouse
-	if Input.is_action_just_pressed("debug_quit"):
-		get_tree().quit()
+	if Input.is_action_just_pressed("esc"):
+		pass
 	if $SpringArm3D/Camera3D/RayCast3D.is_colliding():
 		target = $SpringArm3D/Camera3D/RayCast3D.get_collision_point()
 	else:

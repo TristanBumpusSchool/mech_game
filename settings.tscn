@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://bihv7lubyqjwc"]
+
+[ext_resource type="Script" uid="uid://bg2gmi8phqrjn" path="res://scripts/settings.gd" id="1_3ykye"]
+[ext_resource type="Theme" uid="uid://c2qyer7a6u31a" path="res://default.tres" id="1_nkug2"]
+[ext_resource type="FontFile" uid="uid://ckumdjbxuiw6x" path="res://assets/fonts/Audiowide-Regular.ttf" id="1_x2hje"]
+
+[node name="settings" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_3ykye")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 238.0
+offset_bottom = 70.0
+theme = ExtResource("1_nkug2")
+theme_override_fonts/font = ExtResource("1_x2hje")
+text = "Settings"
+
+[node name="quit" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 72.0
+offset_right = 146.0
+offset_bottom = 142.0
+text = "quit
+"
+flat = true
+
+[connection signal="pressed" from="Control/quit" to="." method="_on_quit_pressed"]

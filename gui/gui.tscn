@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://78se45loude4"]
+[gd_scene load_steps=14 format=3 uid="uid://78se45loude4"]
 
 [ext_resource type="Script" uid="uid://dd0ghq8dagtrs" path="res://scripts/gui.gd" id="1_xqkfk"]
 [ext_resource type="Texture2D" uid="uid://c8mfrw8eshfk7" path="res://assets/gui/crosshair_128x128.png" id="1_yw5qc"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://8jxd0egtqg6m" path="res://assets/gui/hp_bar_joint_1.png" id="6_ytf3d"]
 [ext_resource type="Texture2D" uid="uid://d0l401ya3wtgd" path="res://assets/gui/hp_bar_joint_2.png" id="7_bk7cs"]
 [ext_resource type="Texture2D" uid="uid://eyyh1c34u6gc" path="res://assets/gui/hp_bar_body.png" id="8_kvi6p"]
+[ext_resource type="PackedScene" uid="uid://bihv7lubyqjwc" path="res://settings.tscn" id="11_s1h2m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s1h2m"]
 shader = ExtResource("2_4q42c")
@@ -113,3 +114,5 @@ fill_mode = 3
 texture_under = ExtResource("8_kvi6p")
 texture_progress = ExtResource("8_kvi6p")
 tint_progress = Color(0, 1, 0, 1)
+
+[node name="settings" parent="." instance=ExtResource("11_s1h2m")]
