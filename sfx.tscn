@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cfpcxqtdnoadj" path="res://scripts/sfx.gd" id="1_hlobe"]
 
 [node name="sfx" type="AudioStreamPlayer3D"]
-volume_db = 80.0
+autoplay = true
 bus = &"sfx"
 script = ExtResource("1_hlobe")
 

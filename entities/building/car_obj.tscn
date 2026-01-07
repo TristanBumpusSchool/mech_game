@@ -196,7 +196,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 1.5000001, 2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0.20028836, 0.47215003), Vector3(0, 0.20028836, 0.47215003), Vector3(0, -0.6, 0.472)]
+"values": [Vector3(0, 0.20028836, 0.47215003), Vector3(0, 0.20028836, 0.47215003), Vector3(0, -1.1, 0.472)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -213,7 +213,7 @@ tracks/4/keys = {
 tracks/5/type = "method"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("CharacterBody3D")
+tracks/5/path = NodePath(".")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -221,7 +221,7 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"death"
+"method": &"queue_free"
 }]
 }
 
@@ -236,7 +236,7 @@ rotation_mode = 4
 use_model_front = true
 script = ExtResource("1_qc51u")
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." groups=["npc"]]
 collision_layer = 5
 collision_mask = 5
 script = ExtResource("2_l3374")

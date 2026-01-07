@@ -6,7 +6,6 @@ extends Label3D
 func _ready() -> void:
 	text = t
 	modulate = color
-	print("s")
 	var tween = create_tween()
 	tween.tween_property(self,"global_position",global_position + Vector3(0,2,0),.9)
 

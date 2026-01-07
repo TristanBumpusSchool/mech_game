@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bihv7lubyqjwc"]
+[gd_scene load_steps=8 format=3 uid="uid://bihv7lubyqjwc"]
 
 [ext_resource type="Script" uid="uid://bg2gmi8phqrjn" path="res://scripts/settings.gd" id="1_3ykye"]
 [ext_resource type="Theme" uid="uid://c2qyer7a6u31a" path="res://default.tres" id="1_nkug2"]
 [ext_resource type="FontFile" uid="uid://ckumdjbxuiw6x" path="res://assets/fonts/Audiowide-Regular.ttf" id="1_x2hje"]
 [ext_resource type="Shader" uid="uid://dak4bjrjjoixn" path="res://shaders/invert.gdshader" id="2_gc0em"]
 [ext_resource type="AudioStream" uid="uid://b0jwshbva05r5" path="res://assets/sound/MechaMenuLoop.wav" id="5_cj1lu"]
-[ext_resource type="Script" uid="uid://crnxmep6h6uml" path="res://scripts/music_loc.gd" id="6_71mqq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cj1lu"]
 shader = ExtResource("2_gc0em")
@@ -32,7 +31,7 @@ position = Vector2(576, 324)
 scale = Vector2(11.519999, 6.4799995)
 mesh = SubResource("QuadMesh_3ykye")
 
-[node name="Label" type="Label" parent="Control"]
+[node name="settings" type="Label" parent="Control"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
@@ -43,12 +42,48 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_x2hje")
 text = "Settings"
 
-[node name="quit" type="Button" parent="Control"]
+[node name="vol" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 88.0
+offset_right = 254.0
+offset_bottom = 150.0
+theme = ExtResource("1_nkug2")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_x2hje")
+text = "Volumes"
+
+[node name="sfx_button" type="Button" parent="Control"]
 layout_mode = 0
 offset_left = 32.0
-offset_top = 72.0
-offset_right = 146.0
-offset_bottom = 142.0
+offset_top = 240.0
+offset_right = 355.0
+offset_bottom = 310.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "SFX Volume"
+flat = true
+
+[node name="music_button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 160.0
+offset_right = 395.0
+offset_bottom = 230.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Music Volume"
+flat = true
+
+[node name="quit" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -150.0
+offset_right = 130.0
+offset_bottom = -80.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "quit
 "
 flat = true
@@ -57,6 +92,7 @@ flat = true
 process_mode = 2
 stream = ExtResource("5_cj1lu")
 volume_db = -10.0
-script = ExtResource("6_71mqq")
 
+[connection signal="pressed" from="Control/sfx_button" to="." method="_on_sfx_button_pressed"]
+[connection signal="pressed" from="Control/music_button" to="." method="_on_music_button_pressed"]
 [connection signal="pressed" from="Control/quit" to="." method="_on_quit_pressed"]

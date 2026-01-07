@@ -27,13 +27,13 @@ func _process(delta: float) -> void:
 		if i.value < i.max_value * .1:
 			i.tint_progress = Color(0.66, 0.0, 0.0, 1.0)
 	
-	if $"../joint/placement/arm" != null:
-		$hp_bar/arm_1.value = $"../joint/placement/arm".hp
+	if $"../joint/placement".get_child(0) != null:
+		$hp_bar/arm_1.value = $"../joint/placement".get_child(0).hp
 	elif $hp_bar/arm_1 != null:
 		$hp_bar/arm_1.queue_free()
 	
-	if $"../joint2/placement/arm" != null:
-		$hp_bar/arm_2.value = $"../joint2/placement/arm".hp
+	if $"../joint2/placement".get_child(0) != null:
+		$hp_bar/arm_2.value = $"../joint2/placement".get_child(0).hp
 	elif $hp_bar/arm_2 != null:
 		$hp_bar/arm_2.queue_free()
 	

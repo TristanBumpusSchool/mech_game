@@ -49,6 +49,7 @@ func _process(delta: float) -> void:
 		if firering:
 			$AnimationPlayer.play("fire")
 		if fire:
+			global.sfx("res://assets/sound/gun_shot_sound.wav",global_position, 0)
 			var b = load(bullet)
 			var bul = b.instantiate()
 			bul.global_position = $bullet_source.global_position

@@ -43,6 +43,7 @@ melee=""
 player_bullet=""
 e=""
 pickup=""
+npc=""
 
 [gui]
 

@@ -194,3 +194,5 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 			$joint2.hp += 20
 			if $joint2/placement.get_child(0) != null:
 				$joint2/placement.get_child(0).hp += 20
+	if body.is_in_group("npc"):
+		body.damaged(1)

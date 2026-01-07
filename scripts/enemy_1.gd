@@ -18,8 +18,10 @@ func damaged(d):
 	if hp <= 0:
 		global.score += 150
 		global.pop_up("+150",global_position, Color.YELLOW)
-		$joint/placement.get_child(0).damaged(150)
-		$joint2/placement.get_child(0).damaged(150)
+		if $joint/placement.get_child(0) != null:
+			$joint/placement.get_child(0).damaged(150)
+		if $joint2/placement.get_child(0) != null:
+			$joint2/placement.get_child(0).damaged(150)
 		queue_free()
 
 
@@ -38,7 +40,6 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	#if $joint/placement/arm.type == 1:
 	$NavigationAgent3D.target_position = player.global_position
 	
 	
@@ -57,6 +58,7 @@ func _process(delta: float) -> void:
 				has_range = true
 		else:
 			arms.remove_at(arms.find(i))
+	
 	#Target check for null
 	for i in targets:
 		if i == null:
