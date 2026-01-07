@@ -27,6 +27,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 			boom.target = global_position
 			boom.speed = 0
 			get_tree().current_scene.add_child(boom)
+		global.sfx("res://assets/sound/explosion.wav",global_position)
 		if speed != 0:
 			queue_free()
 		if body.has_method("damaged"):

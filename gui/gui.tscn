@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://78se45loude4"]
+[gd_scene load_steps=15 format=3 uid="uid://78se45loude4"]
 
 [ext_resource type="Script" uid="uid://dd0ghq8dagtrs" path="res://scripts/gui.gd" id="1_xqkfk"]
 [ext_resource type="Texture2D" uid="uid://c8mfrw8eshfk7" path="res://assets/gui/crosshair_128x128.png" id="1_yw5qc"]
@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://d0l401ya3wtgd" path="res://assets/gui/hp_bar_joint_2.png" id="7_bk7cs"]
 [ext_resource type="Texture2D" uid="uid://eyyh1c34u6gc" path="res://assets/gui/hp_bar_body.png" id="8_kvi6p"]
 [ext_resource type="PackedScene" uid="uid://bihv7lubyqjwc" path="res://settings.tscn" id="11_s1h2m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_22my7"]
+shader = ExtResource("2_4q42c")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s1h2m"]
 shader = ExtResource("2_4q42c")
@@ -27,6 +30,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xqkfk")
+
+[node name="score" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0.09803922)
+material = SubResource("ShaderMaterial_22my7")
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 8.0
+offset_right = 20.0
+offset_bottom = 70.0
+grow_horizontal = 2
+horizontal_alignment = 1
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 modulate = Color(1, 1, 1, 0.09803922)

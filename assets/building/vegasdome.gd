@@ -1,34 +1,32 @@
 extends MeshInstance3D
 
-var current_color:="red"
+var current_color ="red"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	go_to_red()
 	$Timer.start()
-	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print()
-	
+	pass
 
 func go_to_red():
 	current_color="red"
 	var tween = get_tree().create_tween()
-	tween.tween_property($".","albedo_color",Color.RED,1.0)
+	tween.tween_property(self,"mesh.material.albedo_color",Color.RED,1.0)
 	#albedo_color=create_tween()
 func go_to_green():
 	current_color="green"
 	
 	var tween = get_tree().create_tween()
-	tween.tween_property($".","albedo_color",Color.GREEN,1.0)
+	tween.tween_property(self,"mesh.material.albedo_color",Color.GREEN,1.0)
 	#albedo_color=create_tween()
 func go_to_blue():
 	current_color="blue"
 	
 	var tween = get_tree().create_tween()
-	tween.tween_property($".","albedo_color",Color.BLUE,1.0)
+	tween.tween_property(self,"mesh.material.albedo_color",Color.BLUE,1.0)
 	#albedo_color=create_tween()
 func _on_timer_timeout() -> void:
 	if current_color=="red":

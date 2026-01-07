@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://8a5c8skq7w3m"]
+
+[ext_resource type="FontFile" uid="uid://ckumdjbxuiw6x" path="res://assets/fonts/Audiowide-Regular.ttf" id="1_k4gb1"]
+[ext_resource type="Script" uid="uid://dyyc0hnnr54tj" path="res://scripts/pop_up.gd" id="1_wdfaw"]
+
+[node name="pop_up" type="Label3D"]
+billboard = 1
+text = "test"
+font = ExtResource("1_k4gb1")
+font_size = 150
+script = ExtResource("1_wdfaw")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

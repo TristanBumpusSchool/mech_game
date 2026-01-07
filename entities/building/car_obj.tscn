@@ -198,31 +198,31 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector3(0, 0.20028836, 0.47215003), Vector3(0, 0.20028836, 0.47215003), Vector3(0, -0.6, 0.472)]
 }
-tracks/4/type = "method"
+tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath(".")
+tracks/4/path = NodePath(".:dead")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(1.9666667),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"queue_free"
-}]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".:dead")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CharacterBody3D")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"death"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jc5j3"]
@@ -252,7 +252,7 @@ transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 0, 0, -2.4753013)
 
 [node name="sprite" type="Node3D" parent="."]
-transform = Transform3D(-2.1855694e-06, 0, -50, 0, 50, 0, 50, 0, -2.1855694e-06, 0, 0.20028836, 0.47215003)
+transform = Transform3D(-2.1855694e-06, 0, 50, 0, 50, 0, -50, 0, -2.1855694e-06, 0, 0.20028836, 0.47215003)
 
 [node name="pCube1" type="MeshInstance3D" parent="sprite"]
 transform = Transform3D(8.408668, 0, 0, 0, 1.4613949, 0, 0, 0, 3.3687322, -0.003827352, 0.004125134, -0.015732178)

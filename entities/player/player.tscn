@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d3m38oqbwd316"]
+[gd_scene load_steps=16 format=3 uid="uid://d3m38oqbwd316"]
 
 [ext_resource type="Script" uid="uid://bdnlpkk8e2k46" path="res://scripts/player.gd" id="1_symyc"]
 [ext_resource type="PackedScene" uid="uid://ct6cswrdhb0w1" path="res://entities/player/joint.tscn" id="2_sglur"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cx6v88qcxfsli" path="res://assets/body/waist.tscn" id="4_wvtmh"]
 [ext_resource type="PackedScene" uid="uid://78se45loude4" path="res://gui/gui.tscn" id="5_fkugw"]
 [ext_resource type="PackedScene" uid="uid://dab77qiywfdfi" path="res://assets/body/leg.tscn" id="8_7thud"]
+[ext_resource type="AudioStream" uid="uid://ddgc0lo81m7i7" path="res://assets/sound/mech_step.wav" id="8_26q78"]
 [ext_resource type="Material" uid="uid://dbptf672i445x" path="res://assets/mats/vanta.tres" id="9_a1qjk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_symyc"]
@@ -63,6 +64,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("step_sound:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_bectd"]
@@ -151,10 +164,10 @@ tracks/2/path = NodePath("legs/l_thigh:rotation")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(1.8243371e-08, -3.989039e-09, -0.43053782), Vector3(0, 0, 0), Vector3(0, 0, 0.70162237), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(1.8243371e-08, -3.989039e-09, -0.43053782), Vector3(0, 0, 0), Vector3(0, 0, 0.70162237)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -163,10 +176,22 @@ tracks/3/path = NodePath("legs/l_thigh/l_shin:rotation")
 tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(8.55685e-09, -8.457181e-10, -0.19703032), Vector3(0, 0, 0), Vector3(0, 0, -0.84299403), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(8.55685e-09, -8.457181e-10, -0.19703032), Vector3(0, 0, 0), Vector3(0, 0, -0.84299403)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("step_sound:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(-0.2, 0.8, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a1qjk"]
@@ -175,6 +200,8 @@ _data = {
 &"idle": SubResource("Animation_bectd"),
 &"walk": SubResource("Animation_7thud")
 }
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qiwj3"]
 
 [node name="player" type="CharacterBody3D" groups=["p"]]
 collision_layer = 5
@@ -193,7 +220,7 @@ transform = Transform3D(-1.0927847e-06, 0, 25, 0, 25, 0, -25, 0, -1.0927847e-06,
 transform = Transform3D(-1.0927847e-06, 0, -25, 0, 25, 0, 25, 0, -1.0927847e-06, -2.8325949, -0.43518388, 1.8233447)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1493647, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9963542, 0)
 shape = SubResource("CapsuleShape3D_symyc")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="."]
@@ -310,4 +337,21 @@ libraries = {
 }
 speed_scale = 1.5
 
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 6
+collision_mask = 6
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.4710522, 0)
+shape = SubResource("BoxShape3D_qiwj3")
+
+[node name="AudioListener3D" type="AudioListener3D" parent="."]
+current = true
+
+[node name="step_sound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.958818, 0)
+stream = ExtResource("8_26q78")
+volume_db = -15.0
+
 [connection signal="timeout" from="timers/jump_timer" to="." method="_on_jump_timer_timeout"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

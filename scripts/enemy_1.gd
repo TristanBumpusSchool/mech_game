@@ -12,6 +12,10 @@ var target = Vector3.ZERO
 
 func damaged(d):
 	hp -= d
+	var pop = load("res://entities/pop_up.tscn").instantiate()
+	pop.global_position = global_position + Vector3(0, 5,0)
+	pop.text = str(d)
+	pop.color = Color.RED
 	if hp <= 0:
 		queue_free()
 

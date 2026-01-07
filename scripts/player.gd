@@ -57,6 +57,9 @@ func movement():
 	
 	if direction == Vector2.ZERO:
 		speed = 0
+		$AnimationPlayer.play("idle")
+	else:
+		$AnimationPlayer.play("walk")
 	
 	velocity = Vector3(direction.x * speed, 0, direction.y * speed)
 	
@@ -163,9 +166,17 @@ func _process(delta: float) -> void:
 	movement()
 	attack()
 	
+	$step_sound.pitch_scale = randf_range(.8,1.2)
+	
 	move_and_slide()
 
 
 
 func _on_jump_timer_timeout() -> void:
 	jumping = false
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body.is_in_group("pickup"):
+		body.queue_free()
+		hp += 20

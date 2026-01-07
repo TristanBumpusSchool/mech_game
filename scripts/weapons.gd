@@ -5,6 +5,7 @@ extends CharacterBody3D
 @export var fire = 0
 @export var bullet = ""
 @export var hp = 100
+var max_hp
 @export var damage = 100
 @export var self_for_death = ""
 @export var shooter = "e"
@@ -28,12 +29,21 @@ func death_animation():
 
 func damaged(d):
 	hp -= d
+	var pop = load("res://entities/pop_up.tscn").instantiate()
+	pop.global_position = global_position + Vector3(0, 5,0)
+	pop.text = str(d)
+	pop.color = Color.RED
+	get_tree().current_scene.add_child(pop)
 	if hp <= 0:
+		global.score += max_hp
 		death_animation()
 
 
 
 #Gdoot Functions
+
+func _ready() -> void:
+	max_hp = hp
 
 func _process(delta: float) -> void:
 	if type == 1:
