@@ -6,9 +6,11 @@ extends AudioStreamPlayer3D
 
 
 func _ready() -> void:
+	print(sound)
 	stream = load(sound)
 	pitch_scale = randf_range(.8,1.2)
 
 
 func _on_finished() -> void:
-	queue_free()
+	#queue_free()
+	pass

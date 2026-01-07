@@ -3,6 +3,12 @@ extends CanvasLayer
 var open = false
 
 
+func _ready() -> void:
+	
+	
+	open = true
+	open = false
+
 
 func _process(delta: float) -> void:
 	

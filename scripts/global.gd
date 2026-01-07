@@ -13,5 +13,12 @@ func sfx(sound = "", pos = Vector3.ZERO):
 	var s = load("res://sfx.tscn").instantiate()
 	
 	s.global_position = pos
-	s.sound = ""
+	s.sound = sound
 	get_tree().current_scene.add_child(s)
+
+func pop_up(text : String, pos : Vector3, col : Color):
+	var pop = load("res://entities/pop_up.tscn").instantiate()
+	pop.global_position = pos + Vector3(randf_range(-1,1), 4,randf_range(-1,1))
+	pop.t = text
+	pop.color = col
+	get_tree().current_scene.add_child(pop)

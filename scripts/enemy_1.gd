@@ -6,26 +6,36 @@ extends CharacterBody3D
 var has_range = false
 var targets = []
 var target = Vector3.ZERO
-@onready var arms = [$joint2/placement/arm, $joint/placement/arm]
+@onready var arms = []
 
 
 
 func damaged(d):
 	hp -= d
-	var pop = load("res://entities/pop_up.tscn").instantiate()
-	pop.global_position = global_position + Vector3(0, 5,0)
-	pop.text = str(d)
-	pop.color = Color.RED
+	
+	global.pop_up(str(d),global_position, Color.RED)
+	
 	if hp <= 0:
+		global.score += 150
+		global.pop_up("+150",global_position, Color.YELLOW)
+		$joint/placement.get_child(0).damaged(150)
+		$joint2/placement.get_child(0).damaged(150)
 		queue_free()
 
 
 
 func _ready() -> void:
-	$joint/placement/arm.add_to_group("e")
-	$joint2/placement/arm.add_to_group("e")
-	$joint/placement/arm.shooter = "e"
-	$joint2/placement/arm.shooter = "e"
+	
+	$joint/placement.add_child(load(global.arms.pick_random()).instantiate())
+	$joint2/placement.add_child(load(global.arms.pick_random()).instantiate())
+	
+	$joint/placement.get_child(0).add_to_group("e")
+	$joint2/placement.get_child(0).add_to_group("e")
+	$joint/placement.get_child(0).shooter = "e"
+	$joint2/placement.get_child(0).shooter = "e"
+	
+	arms = [$joint2/placement.get_child(0), $joint/placement.get_child(0)]
+
 
 func _process(delta: float) -> void:
 	#if $joint/placement/arm.type == 1:

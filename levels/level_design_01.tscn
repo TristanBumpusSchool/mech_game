@@ -79,6 +79,7 @@ point_count = 4
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.442469, 0)
+light_color = Color(0, 1, 0.7019608, 1)
 omni_range = 325.32343
 omni_attenuation = 0.0
 
@@ -116,13 +117,13 @@ skeleton = NodePath("../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_8plr8")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="NavigationRegion3D/envirenment/CollisionShape3D"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -220.48558, 0.1, -23)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -219.3371, 0.1, -23)
 mesh = SubResource("PlaneMesh_p0ri0")
 skeleton = NodePath("../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_8plr8")
 
 [node name="MeshInstance3D8" type="MeshInstance3D" parent="NavigationRegion3D/envirenment/CollisionShape3D"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -220.48558, 0.1, 118.03885)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -218.916, 0.1, 118.039)
 mesh = SubResource("PlaneMesh_p0ri0")
 skeleton = NodePath("../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_8plr8")
@@ -248,6 +249,7 @@ autostart = true
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="vegasdome"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+visible = false
 use_collision = true
 collision_layer = 7
 collision_mask = 7

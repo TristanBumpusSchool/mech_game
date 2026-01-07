@@ -29,13 +29,12 @@ func death_animation():
 
 func damaged(d):
 	hp -= d
-	var pop = load("res://entities/pop_up.tscn").instantiate()
-	pop.global_position = global_position + Vector3(0, 5,0)
-	pop.text = str(d)
-	pop.color = Color.RED
-	get_tree().current_scene.add_child(pop)
+	
+	global.pop_up(str(d),global_position, Color.RED)
+	
 	if hp <= 0:
 		global.score += max_hp
+		global.pop_up("+" + str(max_hp),global_position, Color.YELLOW)
 		death_animation()
 
 
@@ -69,5 +68,5 @@ func _process(delta: float) -> void:
 #Signals
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body.has_method("damaged"):
+	if body.has_method("damaged") and !body.is_in_group(shooter):
 		body.damaged(damage)

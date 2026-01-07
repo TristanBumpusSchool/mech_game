@@ -1,9 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://ct5jms772pair"]
+[gd_scene load_steps=19 format=3 uid="uid://ct5jms772pair"]
 
 [ext_resource type="Script" uid="uid://uwt8gped1sux" path="res://scripts/enemy_1.gd" id="1_i3l3x"]
 [ext_resource type="PackedScene" uid="uid://ct6cswrdhb0w1" path="res://entities/player/joint.tscn" id="2_1n511"]
-[ext_resource type="PackedScene" uid="uid://j67o6socn4pl" path="res://entities/player/arm_2.tscn" id="3_2icl4"]
-[ext_resource type="PackedScene" uid="uid://brpbx3w0fsowt" path="res://entities/player/arm_1.tscn" id="4_c0rnx"]
+[ext_resource type="PackedScene" uid="uid://dab77qiywfdfi" path="res://assets/body/leg.tscn" id="5_c0rnx"]
+[ext_resource type="Material" uid="uid://dbptf672i445x" path="res://assets/mats/vanta.tres" id="6_avfok"]
+[ext_resource type="PackedScene" uid="uid://du1sakh444ask" path="res://assets/body/body.tscn" id="7_tsfxc"]
+[ext_resource type="PackedScene" uid="uid://cx6v88qcxfsli" path="res://assets/body/waist.tscn" id="8_qqury"]
+[ext_resource type="AudioStream" uid="uid://ddgc0lo81m7i7" path="res://assets/sound/mech_step.wav" id="9_qqury"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_avfok"]
 radius = 1.0
@@ -53,34 +56,218 @@ _data = {
 &"attack": SubResource("Animation_1n511")
 }
 
+[sub_resource type="Animation" id="Animation_wvtmh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("legs/r_thigh:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("legs/r_thigh/r_shin:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("legs/l_thigh:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("legs/l_thigh/l_shin:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("step_sound:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_bectd"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("legs/r_thigh:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("legs/r_thigh/r_shin:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("legs/l_thigh:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("legs/l_thigh/l_shin:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7thud"]
+resource_name = "walk"
+length = 2.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("legs/r_thigh:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.8656833), Vector3(0, 0, 0), Vector3(0, 0, -0.51138145), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("legs/r_thigh/r_shin:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.73652893), Vector3(0, 0, 0), Vector3(0, 0, -0.75049156), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("legs/l_thigh:rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1.8243371e-08, -3.989039e-09, -0.43053782), Vector3(0, 0, 0), Vector3(0, 0, 0.70162237)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("legs/l_thigh/l_shin:rotation")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(8.55685e-09, -8.457181e-10, -0.19703032), Vector3(0, 0, 0), Vector3(0, 0, -0.84299403)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("step_sound:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(-0.2, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a1qjk"]
+_data = {
+&"RESET": SubResource("Animation_wvtmh"),
+&"idle": SubResource("Animation_bectd"),
+&"walk": SubResource("Animation_7thud")
+}
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tsfxc"]
+
 [node name="enemy_1" type="CharacterBody3D" groups=["e"]]
 collision_layer = 5
 collision_mask = 0
 script = ExtResource("1_i3l3x")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("CapsuleMesh_avfok")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_tsfxc")
 
 [node name="joint" parent="." instance=ExtResource("2_1n511")]
-transform = Transform3D(1, 0, 0, 0, 0.7071067, -0.7071067, 0, 0.7071067, 0.7071067, 1.07, 1.15, 0)
+transform = Transform3D(1, 0, 0, 0, 0.7071067, -0.7071067, 0, 0.7071067, 0.7071067, 1.7, 1.211, 0.046)
 
 [node name="placement" type="Node3D" parent="joint"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -1.25)
 
-[node name="arm" parent="joint/placement" instance=ExtResource("3_2icl4")]
-hp = 50
-
 [node name="joint2" parent="." instance=ExtResource("2_1n511")]
-transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -1.07, 1.15, 0)
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -1.7, 1.217, 0.061)
 
 [node name="placement" type="Node3D" parent="joint2"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -1.25)
-
-[node name="arm" parent="joint2/placement" instance=ExtResource("4_c0rnx")]
-hp = 50
 
 [node name="front" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
@@ -115,6 +302,93 @@ shape = SubResource("BoxShape3D_1n511")
 libraries = {
 &"": SubResource("AnimationLibrary_c0rnx")
 }
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_a1qjk")
+}
+autoplay = "walk"
+speed_scale = 1.5
+
+[node name="legs" type="Node3D" parent="."]
+transform = Transform3D(-1.0927847e-06, 0, 25, 0, 25, 0, -25, 0, -1.0927847e-06, 0, 0, 0)
+
+[node name="r_thigh" type="Node3D" parent="legs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3400603e-09, -0.040825248, 0.030657003)
+
+[node name="leg" parent="legs/r_thigh" instance=ExtResource("5_c0rnx")]
+transform = Transform3D(1, 0, 0, 0, 0.7782932, 0, 0, 0, 1, 0.017546903, -0.027208716, -0.008870378)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="legs/r_thigh"]
+transform = Transform3D(0.025326893, 6.5530864e-10, 1.1070725e-09, -1.1070733e-09, -6.553087e-10, 0.025326895, 1.1070747e-09, -0.014991714, -1.1070735e-09, -0.0011445973, 0.00032879785, -0.004871104)
+mesh = SubResource("CylinderMesh_tsfxc")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("6_avfok")
+
+[node name="r_shin" type="Node3D" parent="legs/r_thigh"]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 1, -3.7252903e-09, -0.04089405, 1.8626451e-09)
+
+[node name="leg" parent="legs/r_thigh/r_shin" instance=ExtResource("5_c0rnx")]
+transform = Transform3D(0.61653864, 0, -5.3290705e-15, 0, 0.47984782, 0, 5.3290705e-15, 0, 0.61653864, 0.01276859, -0.02199769, -0.007848)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="legs/r_thigh/r_shin"]
+transform = Transform3D(0.015615008, 4.0402312e-10, 6.8255307e-10, -6.8255346e-10, -4.0402312e-10, 0.01561501, 6.8255435e-10, -0.0092429705, -6.8255346e-10, 0.0012445593, -0.005019754, -0.005382292)
+mesh = SubResource("CylinderMesh_tsfxc")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("6_avfok")
+
+[node name="leg2" parent="legs/r_thigh/r_shin" instance=ExtResource("5_c0rnx")]
+transform = Transform3D(-0.013845878, 0.38277474, -2.2499306e-08, -0.377238, -0.014049089, -2.1688642e-08, -1.7105913e-08, 1.6731617e-08, 0.4965126, 0.014169128, -0.040370323, -0.007848)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="legs/r_thigh/r_shin"]
+transform = Transform3D(0.015615008, 4.0402312e-10, 6.8255307e-10, -6.8255346e-10, -4.0402312e-10, 0.01561501, 6.8255446e-10, -0.0092429705, -6.8255346e-10, 0.0012445593, -0.031016856, -0.005382292)
+mesh = SubResource("CylinderMesh_tsfxc")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("6_avfok")
+
+[node name="l_thigh" type="Node3D" parent="legs"]
+transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 1, 8.0452217e-10, -0.040825248, -0.018405326)
+
+[node name="leg" parent="legs/l_thigh" instance=ExtResource("5_c0rnx")]
+transform = Transform3D(1, 0, 0, 0, 0.7782932, 0, 0, 0, 1.0000001, 0.017546905, -0.027208716, -0.011958854)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="legs/l_thigh"]
+transform = Transform3D(0.025326893, 6.5530864e-10, 1.1070725e-09, -1.1070733e-09, -6.553087e-10, 0.025326895, 1.1070747e-09, -0.014991714, -1.1070735e-09, -0.0011445973, 0.00032879785, -0.004871104)
+mesh = SubResource("CylinderMesh_tsfxc")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("6_avfok")
+
+[node name="l_shin" type="Node3D" parent="legs/l_thigh"]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1.0000001, -3.7252903e-09, -0.040894054, 1.8626451e-09)
+
+[node name="leg" parent="legs/l_thigh/l_shin" instance=ExtResource("5_c0rnx")]
+transform = Transform3D(0.61653864, 0, -5.3290705e-15, 0, 0.47984782, 0, 5.3290705e-15, 0, 0.61653864, 0.01276859, -0.02199769, -0.007848)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="legs/l_thigh/l_shin"]
+transform = Transform3D(0.015615008, 4.0402312e-10, 6.8255307e-10, -6.8255346e-10, -4.0402312e-10, 0.01561501, 6.8255435e-10, -0.0092429705, -6.8255346e-10, 0.0012445593, -0.005019754, -0.005382292)
+mesh = SubResource("CylinderMesh_tsfxc")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("6_avfok")
+
+[node name="leg2" parent="legs/l_thigh/l_shin" instance=ExtResource("5_c0rnx")]
+transform = Transform3D(-0.013845878, 0.38277474, -2.2499306e-08, -0.377238, -0.014049089, -2.1688642e-08, -1.7105913e-08, 1.6731617e-08, 0.4965126, 0.014169128, -0.040370323, -0.007848)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="legs/l_thigh/l_shin"]
+transform = Transform3D(0.015615008, 4.0402312e-10, 6.8255307e-10, -6.8255346e-10, -4.0402312e-10, 0.01561501, 6.8255446e-10, -0.0092429705, -6.8255346e-10, 0.0012445593, -0.031016856, -0.005382292)
+mesh = SubResource("CylinderMesh_tsfxc")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("6_avfok")
+
+[node name="body2" parent="." instance=ExtResource("7_tsfxc")]
+transform = Transform3D(-1.0927847e-06, 0, 25, 0, 25, 0, -25, 0, -1.0927847e-06, 2.8400545, -0.29846108, -1.7295634)
+
+[node name="waist2" parent="." instance=ExtResource("8_qqury")]
+transform = Transform3D(-1.0927847e-06, 0, -25, 0, 25, 0, 25, 0, -1.0927847e-06, -2.8325949, -0.43518388, 1.8233447)
+
+[node name="step_sound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.958818, 0)
+stream = ExtResource("9_qqury")
+volume_db = -15.0
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

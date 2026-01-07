@@ -43,6 +43,8 @@ _data = {
 }
 
 [node name="arm" type="RigidBody3D" groups=["pickup"]]
+collision_layer = 6
+collision_mask = 6
 
 [node name="lasergun2" parent="." instance=ExtResource("2_mdv1y")]
 transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, -1.1698561, -1.3416779, 1.0544884)

@@ -14,6 +14,8 @@ extends CharacterBody3D
 
 func damaged(d):
 	hp -= d
+	if hp <= 0:
+		get_tree().change_scene_to_file("res://final.tscn")
 
 func cam_rotation():
 	var temp = rotation.y
@@ -149,6 +151,9 @@ func _ready() -> void:
 	$joint2/placement.get_child(0).add_to_group("p")
 	$joint/placement.get_child(0).shooter = "p"
 	$joint2/placement.get_child(0).shooter = "p"
+	
+	$joint/placement.get_child(0).hp = 200
+	$joint2/placement.get_child(0).hp = 200
 
 
 
@@ -179,4 +184,13 @@ func _on_jump_timer_timeout() -> void:
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("pickup"):
 		body.queue_free()
+		global.pop_up("+20",global_position, Color.GREEN)
 		hp += 20
+		if $joint != null:
+			$joint.hp += 20
+			if $joint/placement.get_child(0) != null:
+				$joint/placement.get_child(0).hp += 20
+		if $joint2 != null:
+			$joint2.hp += 20
+			if $joint2/placement.get_child(0) != null:
+				$joint2/placement.get_child(0).hp += 20

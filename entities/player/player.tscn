@@ -10,7 +10,7 @@
 [ext_resource type="Material" uid="uid://dbptf672i445x" path="res://assets/mats/vanta.tres" id="9_a1qjk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_symyc"]
-radius = 1.0
+radius = 1.0068359
 height = 4.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_j3ovn"]
@@ -133,6 +133,7 @@ tracks/3/keys = {
 resource_name = "walk"
 length = 2.0
 loop_mode = 1
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -188,10 +189,10 @@ tracks/4/path = NodePath("step_sound:playing")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(-0.2, 0.8, 1.8),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(-0.2, 0.8),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true, true, true]
+"values": [true, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a1qjk"]
@@ -202,6 +203,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qiwj3"]
+size = Vector3(2.17865, 1, 2.1797485)
 
 [node name="player" type="CharacterBody3D" groups=["p"]]
 collision_layer = 5
@@ -209,6 +211,7 @@ script = ExtResource("1_symyc")
 accel = 0.5
 jump_time = 0.3
 jump_speed = 10.0
+hp = 600
 
 [node name="gui" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_fkugw")]
 player = NodePath("..")
@@ -299,10 +302,10 @@ skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("9_a1qjk")
 
 [node name="l_thigh" type="Node3D" parent="legs"]
-transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 1, 8.0452217e-10, -0.040825248, -0.018405326)
+transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 1, 8.806933e-10, -0.040825248, -0.020147916)
 
 [node name="leg" parent="legs/l_thigh" instance=ExtResource("8_7thud")]
-transform = Transform3D(1, 0, 0, 0, 0.7782932, 0, 0, 0, 1, 0.017546903, -0.027208716, -0.008870378)
+transform = Transform3D(1, 0, 0, 0, 0.7782932, 0, -3.5527137e-15, 0, 1.0000001, 0.017546905, -0.027208716, -0.012355544)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="legs/l_thigh"]
 transform = Transform3D(0.025326893, 6.5530864e-10, 1.1070725e-09, -1.1070733e-09, -6.553087e-10, 0.025326895, 1.1070747e-09, -0.014991714, -1.1070735e-09, -0.0011445973, 0.00032879785, -0.004871104)
@@ -342,7 +345,7 @@ collision_layer = 6
 collision_mask = 6
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.4710522, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0073547363, -2.4710522, 0.0015563965)
 shape = SubResource("BoxShape3D_qiwj3")
 
 [node name="AudioListener3D" type="AudioListener3D" parent="."]

@@ -24,13 +24,15 @@ script = ExtResource("1_ftivu")
 
 [node name="3d_stuff" type="Node3D" parent="."]
 
-[node name="Camera3D" type="Camera3D" parent="3d_stuff"]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -6.2521973)
-
-[node name="SpotLight3D" type="SpotLight3D" parent="3d_stuff/Camera3D"]
+[node name="SpotLight3D" type="SpotLight3D" parent="3d_stuff"]
+transform = Transform3D(-1, 6.123845e-16, -8.742279e-08, -8.481487e-08, 0.24242988, 0.970169, 2.1193895e-08, 0.970169, -0.24242988, 0, 7.876892, -1.6839905)
+light_color = Color(0, 1, 0.7019608, 1)
 light_energy = 2.0
 spot_range = 13.177
 spot_angle = 30.0
+
+[node name="Camera3D" type="Camera3D" parent="3d_stuff"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -6.2521973)
 
 [node name="body2" parent="3d_stuff" instance=ExtResource("1_lterx")]
 transform = Transform3D(-1.0927847e-06, 0, 25, 0, 25, 0, -25, 0, -1.0927847e-06, 2.8400545, -0.29846108, -1.7295634)
@@ -198,6 +200,7 @@ theme_override_font_sizes/font_size = 16
 [node name="MechaMenuLoop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_ppm8x")
 volume_db = -10.0
+bus = &"music"
 script = ExtResource("10_b1qc6")
 
 [connection signal="pressed" from="left" to="." method="_on_left_pressed"]

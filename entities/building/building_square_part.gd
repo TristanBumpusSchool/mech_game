@@ -9,8 +9,12 @@ func _ready() -> void:
 func damaged(d):
 	hp -= d
 	if hp <= 0:
+		global.pop_up("+10",global_position, Color.YELLOW)
+		global.score += 10
 		$AnimationPlayer.play("explosion")
 		$Timer.start()
+
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

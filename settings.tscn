@@ -57,7 +57,6 @@ flat = true
 process_mode = 2
 stream = ExtResource("5_cj1lu")
 volume_db = -10.0
-autoplay = true
 script = ExtResource("6_71mqq")
 
 [connection signal="pressed" from="Control/quit" to="." method="_on_quit_pressed"]
